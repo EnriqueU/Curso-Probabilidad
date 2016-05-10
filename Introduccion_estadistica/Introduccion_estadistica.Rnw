@@ -144,7 +144,7 @@ Los estad\'isticos descriptivos simples miden la localizaci\'on, dispersi\'on, v
 \item \texttt{media} mide el promedio de los valores de una muestra.
 \item \texttt{mediana} mide el valor central.
 \item \texttt{cuantiles} o \texttt{cuartiles}, muestran donde ciertas partes de la muestra son localizadas.
-\item \texttt{varianza, desviaci\'on \'estandar} y \texttt{rango intercuartil}, miden la variabilidad y dispersi\'on de los datos.
+\item \texttt{varianza, desviaci\'on est\'andar} y \texttt{rango intercuartil}, miden la variabilidad y dispersi\'on de los datos.
 \end{enumerate} 
 
 
@@ -299,10 +299,10 @@ La mediana muestral $\overline{M}$  es un n\'umero que es excedido a lo m\'as po
 La mediana poblacional $M$ es un n\'umero que es excedido con probabilidad no mayor que 0.5 y es precedido con probabilidad no mayor que 0.5, esto es
 
 \[
-\begin{cases}
+\begin{dcases}
 P\{X > M\} \leq 0.5  \\
 P\{X < M\} \leq 0.5
-\end{cases}
+\end{dcases}
 \]
 
 \vspace{0.3cm}
@@ -333,10 +333,10 @@ Para distribuciones continuas, calcular la mediana poblacional se reduce a resol
 
 
 \[
-\begin{cases}
+\begin{dcases}
 P\{X > M\} = 1 - F(M) \leq 0.5  \\
 P\{X < M\}  = F (M)\leq 0.5
-\end{cases} \Rightarrow F(M) = 0.5
+\end{dcases} \Rightarrow F(M) = 0.5
 \]
 
 
@@ -359,10 +359,10 @@ Resolver la ecuaci\'on $F(M) = 1 - e^{-\lambda x} = 0.5$ produce $M = \dfrac{\ln
 Para distribuciones discretas, la ecuaci\'on $F(x) = 0.5$ tiene ya sea todo un intervalo de raices o no tiene raices. En el primer caso, alg\'un n\'umero en este intervalo excluyendo los extremos es una mediana (no es \'unica). Por ejemplo sea la distribuci\'on binomial con $n = 5$ y $p = 0.5$, entonces para todo $2 <x < 3$ , tenemos
 
 \[
-\begin{cases}
+\begin{dcases}
 P\{X < x \} = F(2) =  0.5  \\
 P\{X > x\}  = 1 - F(2)=  0.5
-\end{cases}
+\end{dcases}
 \]
 
 \vspace{0.2cm}
@@ -427,10 +427,10 @@ Desde que $n = 30$ es par, encontramos la $n/2 = 15$-\'esima m\'as peque\~na y $
 
 
 \[
-\begin{cases}
+\begin{dcases}
 P\{X < x \}  \leq p  \\
 P\{X > x\}  \leq 1 -p
-\end{cases} 
+\end{dcases} 
 \]
 
  
@@ -484,4 +484,249 @@ Cuantiles, quartiles y percentiles est\'an relacionados como sigue:
 \item $Q_1 = \pi_{25} = q_{1/4}$\ \ $Q_3 = \pi_{75} = q_{3/4}$
 \item $M = Q_2 = \pi_{50} = q_{1/2}$
 \end{itemize}
+
+
+\vspace{0.5cm}
+
+
+\textbf{Ejemplo 6} Calculemos el primer y el 3 quartil de los tiempos del CPU, del ejemplo 5:
+
+\vspace{0.3cm}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c c c c c c c c c c}
+9 &15 &19 & 22&  24 &25& 30& 34& 35 &35 \\
+36 & 36& 37& 38& 42& 43& 46& 48& 54& 55 \\
+56 & 56 &59& 62 &69& 70& 82& 82 &89 &139
+
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Para el primer cuartil $\hat{Q}_{1}$, tenemos que $p = 0.25$, encontramos que el $25\%$ de la muestra es igual $np = 7.5$ y el $75\%$ de la muestra es $n(1 -p) = 22.5$ observaciones. Desde la muestra ordenada, el octavo elemento $34$ no tiene m\'as que $7.5$ observaciones a la izquierda y no m\'as que $22.5$ oservaciones a la derecha. As\'i $\hat{Q}_{1} = 34$.
+\item  Para el tercer cuartil $\hat{Q}_{3}$ el 23 elemento de la muestra  $\hat{Q}_{3} = 59$.
+\end{itemize}
+
+
+\vspace{0.8cm}
+
+\textbf{Varianza y desviaci\'on est\'andar}
+
+\vspace{0.5cm}
+
+Para una muestra $(X_1, X_2, \dots, X_n)$ la \texttt{varianza muestral} es definida como 
+
+\vspace{0.3cm}
+
+\[
+s^2 = \dfrac{1}{n -1}\displaystyle\sum_{i =1}^{n}(X_i - \overline{X})^2
+\]
+
+\vspace{0.3cm}
+
+y mide la variabilidad entre las observaciones y estima la \texttt{varianza de la poblaci\'on} $\sigma^2 = Var(X)$.
+
+\vspace{0.3cm}
+
+La \texttt{desviaci\'on est\'andar muestral} es la raiz cuadrada de la varianza muestral.
+
+\[
+s = \sqrt{s^2}
+\]
+
+\vspace{0.3cm}
+
+y se usa para medir  la variabilidad en las mismas unidades que X y calcula la desviaci\'on est\'andar de la poblaci\'on $\sigma$ = sd(X). 
+
+La f\'ormula para $s^2$ se sigue de la misma idea $\sigma^2$, es tambi\'en el promedio de la desviaci\'on desde la media al cuadrado, calculada como una muestra. Como $\sigma^2$, la varianza muestral mide cuan lejos los valores de $X$ est\'an de su promedio.
+
+\vspace{0.3cm}
+
+Una manera de calcular la varianza muestral es usar la siguiente f\'ormula:
+
+\vspace{0.2cm}
+
+\[
+s^2 = \dfrac{\displaystyle\sum_{i = 1}^{n}X_i^2 - n\overline{X}^2}{n - 1}.
+\]
+
+
+\vspace{0.3cm}
+
+\textbf{Ejemplo 7} Para los datos del \texttt{Ejemplo 6} tenemos que $\overline{X}$ se sigue de la definici\'on o de la f\'ormula anterior que la varianza muestral es $s^2 = 703.1506 (\text{sec}^2)$.
+
+\vspace{0.2cm}
+
+La desviaci\'on est\'andar muestral es $s = \sqrt{703.1506} = 26.1506 (\text{sec})$. Como $\overline{X}$ y $s$ estiman la media poblacional y la desviaci\'on est\'andar, por la desigualdad de Chebishev podemos derivar que al menos $8/9$ de todas las tareas requiere menos que
+
+\[
+\overline{X} + 3s = 127.78 \text{sec}
+\]
+
+\vspace{0.3cm}
+
+de tiempo del CPU.
+
+
+\vspace{0.5cm}
+
+
+El coeficiente $\dfrac{1}{n -1}$ asegura que $s^2$ es un estimador insesgado  de $\sigma^2$.
+
+\vspace{0.3cm}
+
+Para probar esto supongamos que $\mu = E(X) = 0$, entonces $EX_i^2 = VarX_i = \sigma^2$, as\'i 
+
+\[
+E\overline{X} = Var\overline{X} = \sigma^2/n
+\]
+
+\vspace{0.2cm}
+
+Entonces 
+
+\[
+Es^2 = \dfrac{E\displaystyle\sum X_i^2 - nE\overline{X}^2}{n -1} = \dfrac{n\sigma^2 - \sigma^2}{n - 1} = \sigma^2.
+\]
+
+\vspace{0.3cm}
+
+Si $\mu \neq 0$, consideramos la variable auxiliar $Y_i = X_i - \mu$ como la varianza no depende de ninguna constante $Y_i$ y $X$ tienen la misma varianza, lo que lleva a que sus varianzas son iguales tambi\'en:
+
+\vspace{0.2cm}
+
+\[
+s_{Y}^2 = \dfrac{\displaystyle\sum(Y_i - \overline{Y})^2}{n - 1} = \dfrac{\displaystyle\sum(X_i + \mu -(\overline{X} - \mu))^2}{n - 1} = \dfrac{\displaystyle\sum(X_i - \overline{X})^2}{n -1} = s_{X}^2
+\]
+
+\vspace{0.2cm}
+
+Desde que $E(Y_i) = 0$, tenemos $E(s_{X}^2) = E(s_{Y}^2) = \sigma_{Y}^2 = \sigma_{X}^2$. De manera similar que para  $\overline{X}$ se puede mostrar que bajo ciertas condiciones, la varianza muestral y la desviaci\'on est\'andar muestral son consistentes y cumplen la propiedad de normalidad as\'intotica.
+
+
+\vspace{0.8cm}
+
+\textbf{Los errores est\'andar de las estimaciones}
+
+\vspace{0.3cm}
+
+El error est\'andar de un estimador $\hat{\theta}$ es la desviaci\'on est\'andar, $\sigma(\hat{\theta})$ = std$(\hat{\theta})$.
+
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $\sigma(\hat{\theta})$ = error est\'andar del estimador $\hat{\theta}$ de param\'etro $\theta$.
+\item $s(\hat{\theta})$ = error est\'andar estimado = $\hat{\sigma}(\hat{\theta})$.
+\end{itemize}
+\vspace{0.3cm}
+
+Como una medida de  variabilidad, los errores est\'andar demuestran precisi\'on y la fiabilidad de los estimadores. Muestran c\'omo  muchos estimadores del mismo  par\'ametro $\theta$ puede variar si se calculan a partir de diferentes muestras. Idealmente, nos gustar\'ia trabajar con estimadores insesgados o poco sesgados que tienen  un bajo error est\'andar.
+
+
+
+
+\vspace{0.3cm}
+
+ \textbf{Ejemplo 8} El error de est\'andar de la media muestral, se puede expresar como el param\'etro $\theta = \mu$ y es estimada desde la muestra de tama\~no $n$ por la media muestra $\hat{\theta} = \overline{X}$, como el error est\'andar de este estimador es $\sigma(\overline{X}) = \sigma / \sqrt{n}$ y puede ser estimado por $s(\overline{X}) = s/\sqrt{n}$.
+
+
+\vspace{0.8cm}
+
+\textbf{Rango intercuartil}
+
+\vspace{0.3cm}
+
+La media muestral, la varianza y la desviaci\'on est\'andar son sensibles a valores \texttt{at\'ipicos(outliers)}. Si una observaci\'on  at\'ipica  (outlier) aparece err\'oneamente en nuestro conjunto de datos,  puede afectar significativamente los valores de $\overline{X}$ y $s^2$.
+
+En la pr\'actica, estos valores at\'ipicos  pueden ser un problema real que es dif\'icil de evitar. Para poder detectar e identificar valores at\'ipicos, necesitamos medidas de variabilidad que no son muy sensibles a ellos.
+
+\vspace{0.2cm}
+
+Una de estas medidas es un \texttt{rango intercuartil}, que es definido como la diferencia entre el primer y tercer cuartil 
+
+
+\[
+IQR = Q_3 - Q_1
+\]
+
+\vspace{0.2cm}
+
+Esto mide la variabilidad de la data y es usado para detectar outliers. El IQR es estimado por el \texttt{rango intercuartil muestral}
+
+\[
+\widehat{IQR} = \hat{Q}_3 - \hat{Q}_1
+\]
+
+\vspace{0.3cm}
+
+Una propiedad importante para  la identificaci\'on de los outliers es la regla de $1,5(IQR)$.
+es decir la  medida $1.5(\hat{Q_3} - \hat{Q_1})$  desde el primer cuartil hasta el tercer cuartil. Todos los puntos de datos observados fuera de este rango  son los primeros candidatos a ser manejados como valores at\'ipicos.
+
+\vspace{0.2cm}
+
+La regla de $1.5(IQR)$ parte  de la suposici\'on de que los datos son casi son distribuido normalmente. Si esto es una suposici\'on v\'alida, entonces  el $99.3\%$ de la poblaci\'on
+debe aparecer dentro del   $1.5$ rango intercuartil de los cuartiles. 
+
+
+\vspace{0.5cm}
+
+\textbf{Ejemplo 9} Calculemos $\widehat{IQR}$ con los datos sobre el tiempo del CPU en los ejemplos anteriores
+
+\vspace{0.3cm}
+
+\[
+\widehat{IQR} = \hat{Q}_3 - \hat{Q}_1 = 59- 34 = 25
+\]
+
+
+\vspace{0.3cm}
+
+y la medida del $1.5$ rango intercuartil para cada  cuartil:
+
+
+
+\begin{align*}
+\hat{Q}_1 -  1.5\widehat{IQR}  =  & 34 - 37.5  =  -3.5 \\
+\hat{Q}_3 + 1.5\widehat{IQR} = & 59 + 37.5  = 96.5
+\end{align*}
+
+\vspace{0.3cm}
+
+En nuestros datos, una tarea se realiz\'o en $139$ segundos, que est\'a  fuera del intervalo $[-3.5, 96.5]$. Este puede ser un valor at\'ipico.
+
+\vspace{0.3cm}
+
+Si la regla  $1.5(IQR)$  sugiere posibles valores at\'ipicos en la muestra a veces lo que se debe hacer algunas veces es suprimir las observaciones sospechosas, teniendo en cuenta que un valor at\'ipico puede afectar significativamente la media muestral  y la desviaci\'on est\'andar y por lo tanto echar a perder nuestro an\'alisis estad\'istico. Sin embargo, borrarlos de inmediato puede no ser la mejor idea, lo ideal es hacer un seguimiento  de los valores at\'ipicos y entender la raz\'on por la que han aparecido en el conjunto de datos.  A veces fen\'omenos importantes se descubren examinado valores at\'ipicos.
+
+
+Si se confirma que una observaci\'on sospechosa entr\'o en el conjunto de datos por un simple error, se puede eliminar.
+
+\vspace{0.8cm}
+
+{\Large Gr\'aficos estad\'isticos}
+
+
+\vspace{0.8cm}
+
+
+\textbf{Histogramas}
+
+\vspace{0.3cm}
+
+Los histogramas muestran la forma de un \texttt{pmf} o \texttt{pdf} de la data, verifican la homogeneidad y sugieren posibles \texttt{outliers}. Para construir un histograma, dividimos el rango de los datos en iguales intervalos o \texttt{bins} y contamos las observaciones que pertenecen a cada intervalo.
+
+
+\begin{itemize}
+\item Un \texttt{histograma de frecuencia} consiste de columnas, una para cada intervalo, cuyo altura es determinada por el n\'umero de observaciones en el intervalo.
+\item Un \texttt{histograma de frecuencias relativas} tiene la misma forma pero tiene una escala vertical diferente. La altura de las columnas representan la proporci\'on de todos los datos que aparecen en cada intervalo.
+
+
+\end{itemize}
+
+
 \end{document}

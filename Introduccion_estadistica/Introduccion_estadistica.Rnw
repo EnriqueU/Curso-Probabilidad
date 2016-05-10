@@ -1,0 +1,487 @@
+\documentclass{article}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath} 
+\usepackage{mathtools}
+\usepackage{latexsym}
+\geometry{verbose,tmargin=1.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfstartview={XYZ null null 1}}
+\begin{document}
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(grid)
+library(animation)
+# set global chunk options
+opts_chunk$set(fig.path='figure/minimal-', fig.align='center', fig.show='hold')
+options(formatR.arrow=TRUE,width=90)
+@
+
+\title{Introducci\'on a la Estad\'istica y Probabilidades CM-274}
+\date{}
+\maketitle
+
+{\Large Introducci\'on a la Estad\'istica}
+
+
+
+\vspace{0.8cm}
+
+En Estad\'istica coleccionamos datos para obtener el conocimiento de os par\'ametros y las distribuciones para adecuar un determinado modelo y producir predicciones. Una correcta colecci\'on de datos puede proporcionar suficiente informaci\'on acerca de los par\'ametros observados del sistema observado.
+
+\vspace{0.5cm}
+
+\textbf{Poblaci\'on, muestras, par\'ametros y estad\'isticos}
+
+\vspace{0.3cm}
+
+Una \texttt{poblaci\'on} agrupa  todo las unidades de inter\'es. Una caracter\'istica n\'umericas de la poblaci\'on es un \texttt{par\'ametro}. Una \texttt{muestra} consiste de unidades que se recogen  de la poblaci\'on,  usada para hacer predicciones  acerca de la poblaci\'on. Alguna funci\'on de una muestra se llama \textbf{estad\'istico}.
+
+
+En la pr\'actica recogemos  los datos en forma de muestras aleatorias de la poblaci\'on; esos son nuestros datos a los cuales podemos  medirlos, hacer c\'alculos y estimar los par\'ametros deconocidos de la poblaci\'on bajo cierta medida de precisi\'on.
+
+\vspace{0.5cm}
+
+\textbf{Notaci\'on:}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $\theta$ = par\'ametro poblacional.
+\item $\hat{\theta}$ = estimador, obtenido de la muestra.
+\end{itemize} 
+
+\vspace{0.5cm}
+
+\textbf{Ejemplo 1 }   Incluso si el $80 \%$ de los usuarios est\'a conforme  con su conexi\'on a internet, esto no significa que exactamente $8$ de cada $10$ usuarios en la muestra observada est\'an conforme con el servicio. Por ejemplo con una probabilidad de $0.0328$, s\'olo la mitad de los diez consumidores est\'a conforme . En otras palabras, hay un $3\%$ de probabilidad  para que una muestra aleatoria  sugerir que contrariamente  al par\'ametro de la poblaci\'on, no m\'as que el $50\%$ de usuarios est\'an satisfechos.
+
+\vspace{0.8cm}
+
+\textbf{Errores de muestreo y no muestreo}
+
+\vspace{0.3cm}
+
+Los errores muestrales y no muestrales se refieren a la diferencia entre las muestras recogidas y la poblaci\'on.
+
+\begin{itemize}
+\item \texttt{Errores de muestreo} es causado por el hecho de que una muestra o porci\'on de la poblaci\'on es recogida. Cuando el tama\~no de la muestra crece, para muchos procedimientos estad\'isticos el error de muestreo decae.
+\item \texttt{Errores de no muestreo} son causados por un inapropiado esquema de muestras o errores en las t\'ecnicas estad\'sticas. 
+\end{itemize}
+
+\vspace{0.5cm}
+
+
+\textbf{Ejemplo 2 } La comparando  dos marcas de port\'atiles, un alto directivo pide a todos los empleados de su grupo establecer que port\'atil, les gusta y generaliza las respuestas obtenidas a la conclusi\'on, de que  port\'atil es mejor. Una vez m\'as, estos empleados no son  seleccionados  aleatoriamente  de la poblaci\'on de todos los usuarios que usan  las port\'atiles. Adem\'as, es probable que sean dependientes de sus opiniones, trabajando en conjunto, estas personas a menudo se comunican, y sus puntos de vista se afectan entre s\'i. Observaciones dependientes  no necesariamente causan errores de no muestreo, si se saben manejar  adecuadamente. El hecho es que, en tales casos, no podemos asumir  independencia.
+
+\vspace{0.3cm}
+
+\textbf{Ejemplo 3 }  Una popular revista semanal predijo correctamente os ganadores de las elecciones \mbox{presidenciales} en los a\~nos $1920, 1924, 1928$ y $1932$. Sin embargo fall\'o en $1936$, pese a tener   una muestra de $10$ millones de personas. Este es un cl\'asico ejemplo de errores de no muestreo.
+
+\vspace{0.5cm}
+
+\textbf{Muestreo Aleatorio Simple} es un dise\~no de muestreo donde los datos (unidades) se recogen de toda la poblaci\'on independiente unos  de otros, todos igualmente probable de ser incluidos en la muestra.
+
+
+\vspace{0.6cm}
+
+\textbf{Ejemplo 4}  Para evaluar la 'satisfacci\'on' de sus usuarios, un banco, hace una lista de todas sus \mbox{cuentas}. El \textbf{M\'etodo de Montecarlo} es usado para escoger un n\'umero aleatorio entre $1$ y $N$, donde $N$ es el n\'umero total de cuentas del banco, generando  una distribuci\'on uniforme en $(0,N)$ de la variable X y una muestra  del n\'umero de cuenta $\lceil{X}\rceil$ de la lista. Similarmente, escogemos una segunda cuenta, \mbox{distribuida uniformemente} entre las $N -1$ cuentas, etc, hasta conseguir una muestra de tama\~no $n$. Esto es una muestra aleatoria simple.
+
+
+\vspace{0.3cm}
+
+Obtener, un muestreo aleatorio representativo, es importante en estad\'istica. Aunque s\'olo una \mbox{porci\'on} de la poblaci\'on est\'a en nuestras manos, un riguroso dise\~no de  muestreo seguido por una adecuada \mbox{inferencia}  nos permite estimar par\'ametros y hacer predicciones con cierto grado de de confiabilidad.
+
+
+\vspace{0.8cm}
+
+\textbf{Estad\'isticos descriptivos simples}
+
+\vspace{0.3cm}
+
+Supongamos que tenemos el siguiente  muestreo aleatoria recogida 
+
+\vspace{0.3cm}
+
+$S = (X_1, X_2,\dots , X_n)$
+
+\vspace{0.3cm}
+
+Por ejemplo, para evaluar la efectividad de un procesador, para un cierto tipo de tareas, recogemos el tiempo del CPU de manera aleatoria para determinados trabajos  (en segundos) con  $n = 30$:  
+
+\vspace{0.3cm}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c c c c c c c c c c}
+70 & 36 & 43 & 69 & 82& 48 & 34 & 62 & 35 & 15 \\ 
+59 & 139 & 46 & 37 & 42 & 30 & 55 & 56 & 36 & 82 \\ 
+38 & 89 & 54 & 25 & 35& 24 & 22 & 9 & 56 & 19 \\ 
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+Qu\'e informaci\'on, conseguimos de estos  de n\'umeros?
+
+\vspace{0.2cm}
+
+Sabemos que X, el tiempo del CPU, es una variable aleatoria, y esos valores no tienen que estar entre los $30$ observados, pero estos datos pueden ser \'utiles para describir la distribuci\'on X.
+
+Los estad\'isticos descriptivos simples miden la localizaci\'on, dispersi\'on, variabilidad y otras caracter\'isticas que pueden ser calculadas inmediatamente.  Por ejemplo tenemos:
+
+\begin{enumerate}
+\item \texttt{media} mide el promedio de los valores de una muestra.
+\item \texttt{mediana} mide el valor central.
+\item \texttt{cuantiles} o \texttt{cuartiles}, muestran donde ciertas partes de la muestra son localizadas.
+\item \texttt{varianza, desviaci\'on \'estandar} y \texttt{rango intercuartil}, miden la variabilidad y dispersi\'on de los datos.
+\end{enumerate} 
+
+
+\vspace{0.3cm}
+
+Cada estad\'istico es una variable aleatoria, ya que se calcula a partir de datos  aleatorios. Estos tienen una  \texttt{distribuci\'on muestral} que permite hacer inferencia.
+
+Cada estad\'istico calcula el par\'ametro de la poblaci\'on correspondiente y a\~nade cierta informaci\'on acerca de la distribuci\'on de X, la variable de inter\'es.
+
+\vspace{0.8cm}
+
+\newpage 
+
+\textbf{Media}
+
+\vspace{0.3cm}
+
+La media muestral $\overline{X}$ estima la media poblacional $\mu = E(X)$.
+
+\vspace{0.2cm}
+
+Se define la media muestral $\overline{X}$ como el promedio aritm\'etico de 
+
+\vspace{0.2cm}
+
+\[
+\overline{X} = \dfrac{X_1 + X_2 + \cdots X_n}{n}
+\]
+
+\vspace{0.2cm}
+
+Naturalmente, siendo el promedio de observaciones en la muestra, $\overline{X}$ calcula el valor promedio  de toda la distribuci\'on de X. Para grandes muestras  recogidas se espera que converga a $\mu$.
+
+Si la poblaci\'on tiene media y varianza finita, la media posee las siguientes propiedades:
+
+\vspace{0.5cm}
+
+
+Un estimador $\hat{\theta}$ es insesgado (\texttt{unbiased}) para un par\'ametro $\theta$ si su esperanza es igual al par\'ametro:
+
+\[
+E(\hat{\theta}) = \theta
+\]
+
+para todos los posibles valores de $\theta$.
+
+\vspace{0.2cm}
+
+
+El sesgo (\texttt{Bias}) de $\hat{\theta}$ es definido como $Bias(\hat{\theta}) = E(\hat{\theta} - \theta)$.
+
+
+\vspace{0.3cm}
+
+El insesgamiento(\texttt{unbiasedness}) significa que en un largo plazo,  recoger un gran n\'umero de muestras y el c\'alculo de $\hat{\theta}$, en promedio  nos permite alcanzar el  par\'ametro $\theta$  desconocido. En otras palabras, en un largo plazo el estimador insesgado no subestima ni sobreestima al par\'ametro $\theta$. La media muestral estima $\mu$ sin sesgo, ya que:
+
+
+\vspace{0.5cm}
+
+
+\[
+E(\overline{X}) = E\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{EX_1 + \dots EX_n}{n} = \dfrac{\mu}{n} = \mu.
+\]
+
+
+\vspace{0.5cm}
+
+Un estimador $\hat{\theta}$ es consistente para un par\'ametro $\theta$ si el error muestral de alguna magnitud converge a $0$ cuando la muestra aumenta de tama\~no hacia el infinito. Es decir:
+
+\[
+P\Bigl\{ \vert \hat{\theta} - \theta\vert > \epsilon \Bigr\} \rightarrow 0 \ \ \ \text{si}\ \ \  n \rightarrow \infty
+\]
+
+\vspace{0.2cm}
+
+para un $\epsilon  > 0$.  
+
+
+\vspace{0.3cm}
+
+Para usar esta desigualdad, encontremos la varianza de $\overline{X}$,
+
+\[
+Var(\overline{X}) = Var\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{VarX_1 + \dots + VarX_n}{n^2} = \dfrac{n\sigma^2}{n^2} = \dfrac{\sigma^2}{n}.
+\]
+
+\vspace{0.3cm}
+
+Por la desigualdad de Chebyshev para la variable aleatoria $\overline{X}$ tenemos que 
+
+\[
+P\Bigl\{ \vert\overline{X} -\mu   \vert > \epsilon\Bigr\} \leq \dfrac{Var(\overline{X})}{\epsilon^2} = \dfrac{\sigma^2/n}{\epsilon^2} \rightarrow 0\ \ \ \text{cuando} \ \ \ n \rightarrow \infty.
+\]
+
+As\'i la media muestral es consistente.
+
+
+\vspace{0.5cm}
+
+\textbf{Normalidad as\'intotica}
+
+\vspace{0.3cm}
+
+Por el teorema del l\'imite central, la suma de observaciones y por tanto la media muestral tiene aproximadamente una distribuci\'on normal si son calculados desde una muestra muy grande.
+
+Esto es, la distribuci\'on de 
+
+\[
+Z = \dfrac{\overline{X} - E\overline{X}}{Sd\overline{X}} = \dfrac{\overline{X} - \mu}{\sigma\sqrt{n}}
+\]
+
+\vspace{0.3cm}
+
+converge a la normal est\'andar cuando $n \rightarrow \infty$. Esta propiedad es llamada \texttt{normalidad as\'intotica}.
+
+
+\vspace{0.5cm}
+
+\textbf{Notaci\'on}
+
+\begin{itemize}
+\item $\mu$ = media poblacional
+\item $\overline{X}$ = media muestral, estimador de $\mu$.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $\sigma$ = desviaci\'on est\'andar poblacional.
+\item $s$  = desviaci\'on est\'andar muestral, estimador de $\sigma$
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $\sigma^2$ = varianza  poblacional.
+\item $s^2$  = varianza muestral, estimador de $\sigma^2$
+\end{itemize}
+
+\vspace{0.8cm}
+
+\textbf{Mediana}
+
+\vspace{0.3cm}
+
+Una desventaja de la media muestral es su \texttt{sensitividad} a observaciones extremas. Otro medida de localizaci\'on es la \texttt{mediana muestral}, que estima la mediana poblacional y que es mucho menos sensitiva que la media muestral.
+
+La mediana muestral $\overline{M}$  es un n\'umero que es excedido a lo m\'as por  la mitad de observaciones y es precedido por a lo m\'as por la mitad de observaciones.
+
+\vspace{0.2cm}
+
+La mediana poblacional $M$ es un n\'umero que es excedido con probabilidad no mayor que 0.5 y es precedido con probabilidad no mayor que 0.5, esto es
+
+\[
+\begin{cases}
+P\{X > M\} \leq 0.5  \\
+P\{X < M\} \leq 0.5
+\end{cases}
+\]
+
+\vspace{0.3cm}
+
+
+
+Comparando la media $\mu$ y la mediana, podemos decir si la distribuci\'on de X es sesgada a la derecha, sesgada a la izquierda o es sim\'etrica, como indica la figura:
+
+\vspace{0.3cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{g1.png}
+\end{figure}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Distribuci\'on sim\'etrica $\Rightarrow  M = \mu$.
+\item Distribuci\'on sesgada a la derecha $\Rightarrow  M < \mu$.
+\item  Distribuci\'on sesgada a la izquiera $\Rightarrow  M > \mu$.
+\end{itemize}
+
+\vspace{0.5cm}
+
+
+Para distribuciones continuas, calcular la mediana poblacional se reduce a resolver una ecuaci\'on:
+
+
+\[
+\begin{cases}
+P\{X > M\} = 1 - F(M) \leq 0.5  \\
+P\{X < M\}  = F (M)\leq 0.5
+\end{cases} \Rightarrow F(M) = 0.5
+\]
+
+
+\vspace{0.3cm}
+
+Por ejemplo para la distribuci\'on exponencial con par\'ametro $\lambda$ que tiene un cdf
+
+\[
+F(x) = 1 - e^{-\lambda x}\ \ \ \text{para}\ \ \  x > 0.
+\]
+
+
+\vspace{0.2cm}
+
+Resolver la ecuaci\'on $F(M) = 1 - e^{-\lambda x} = 0.5$ produce $M = \dfrac{\ln 2}{\lambda}$ y como $\mu = \dfrac{1}{\lambda}$, tenemos que $M < \mu$, lo que implica que la distribuci\'on exponencial es sesgada a la derecha.
+
+\vspace{0.5cm}
+
+
+Para distribuciones discretas, la ecuaci\'on $F(x) = 0.5$ tiene ya sea todo un intervalo de raices o no tiene raices. En el primer caso, alg\'un n\'umero en este intervalo excluyendo los extremos es una mediana (no es \'unica). Por ejemplo sea la distribuci\'on binomial con $n = 5$ y $p = 0.5$, entonces para todo $2 <x < 3$ , tenemos
+
+\[
+\begin{cases}
+P\{X < x \} = F(2) =  0.5  \\
+P\{X > x\}  = 1 - F(2)=  0.5
+\end{cases}
+\]
+
+\vspace{0.2cm}
+
+Por definici\'on, alg\'un intervalo $(2,3)$ es una mediana, como se muestra en el primer gr\'afico de la figura
+
+\vspace{0.3cm}
+
+
+Para una distribuci\'on binomial con $n = 5$ y $p = 0.4$, se tiene que $F(x) < 0.5$ si $x < 2$ y $F(x) > 0.5 $ para $x \geq 2$, pero no hay un valor $x$ tal que $F(x) = 0.5$. Entonces $M = 2$ es la mediana, como se muestra en el segundo gr\'afico de la figura.
+ 
+ 
+ \vspace{0.3cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{g2.png}
+\end{figure}
+
+\vspace{0.3cm}
+
+Una muestra es siempre discreta, pues consiste de un n\'umero finito de observaciones. Entonces, el c\'alculo de la mediana muestral es similar al caso de distribuciones discretas.
+
+En el muestreo aleatorio simple, todas las observaciones son igualmente probables, y por lo tanto, las probabilidades iguales  en cada lado de la mediana se traducen en un n\'umero igual de observaciones. Una vez m\'as, existen dos casos, dependiendo del tama\~no de la muestra $n$.
+
+\begin{itemize}
+\item Si $n$ es impar la $\Bigl(\dfrac{n + 1}{2} \Bigr)$ -\'esima  m\'as peque\~na observaci\'on es la mediana.
+\item Si $n$ es par, el n\'umero entre las observaciones $\Bigl(\dfrac{n}{2} \Bigr)$-\'esima  m\'as peque\~na y la $\Bigl(\dfrac{n + 2}{2} \Bigr)$-\'esima m\'as peque\~na es la mediana.
+\end{itemize}
+
+\vspace{0.6cm}
+
+
+\textbf{Ejemplo 5} Calculamos la mediana  con  $n = 30$ los tiempo del CPU determinados de manera aleatoria para determinados trabajos (en segundos) ordenados:
+
+
+\vspace{0.3cm}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c c c c c c c c c c}
+9 &15 &19 & 22&  24 &25& 30& 34& 35 &35 \\
+36 & 36& 37& 38& 42& 43& 46& 48& 54& 55 \\
+56 & 56 &59& 62 &69& 70& 82& 82 &89 &139
+
+\end{tabular}
+\end{table}
+
+Desde que $n = 30$ es par, encontramos la $n/2 = 15$-\'esima m\'as peque\~na y $(n +2)/2$-\'esima m\'as peque\~na observaciones que son $42$ y $43$. Alg\'un n\'umero entre ellos es la mediana.
+
+\vspace{0.8cm}
+
+\textbf{Cuantil, percentiles y cuartiles}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Un \texttt{p-cuantil} de una poblaci\'on es un n\'umero $x$ que resuelve la ecuaci\'on, para alg\'un $0 < p < 1$:
+
+\vspace{0.2cm}
+
+
+\[
+\begin{cases}
+P\{X < x \}  \leq p  \\
+P\{X > x\}  \leq 1 -p
+\end{cases} 
+\]
+
+ 
+ \item Un \texttt{p-cuantil} muestral es un n\'umero que excede a lo m\'as al $100p\%$ de la muestra y es excedido a lo m\'as por $100(1 -p)\%$, de la muestra.
+ 
+ \item Un $\gamma$-\texttt{percentil} es $(0.01\gamma)$-cuantil.
+ 
+ \item El primero, segundo, tercer cuartil son los $25, 50, 75$ percentiles. Ellos dividen una poblaci\'on o una muestra en cuatro partes iguales.
+ \end{itemize}
+ 
+ \vspace{0.3cm}
+ 
+ Una mediana es al mismo tiempo el $0.5$-quantil, $50$ percentil y el segundo cuartil.
+ 
+ 
+ \vspace{0.5cm}
+
+\textbf{Notaci\'on}
+
+\begin{itemize}
+\item $q_p$ = \texttt{p-cuantil} poblacional
+\item $\hat{q}_p$ = \texttt{p-cuantil} muestral, estimador de $q_p$.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $\pi_{\gamma}$ = $\gamma$-percentil poblacional.
+\item $\hat{\pi}_{\gamma}$  = $\gamma$-percentil  muestral, estimador de $\pi_{\gamma}$.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $Q_1, Q_2, Q_3$ = cuartiles poblacional.
+\item $\hat{Q}_1, \hat{Q}_2, \hat{Q}_3$ = cuartiles muestrales, estimadores de $Q_1, Q_2$ y $Q_3$
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{itemize}
+\item $M$ = mediana poblacional
+\item $\hat{M}$ = mediana muestral, estimador $M$.
+\end{itemize}
+
+\vspace{0.3cm}
+
+Cuantiles, quartiles y percentiles est\'an relacionados como sigue:
+
+\begin{itemize}
+\item $q_p = \pi_{100p}$
+\item $Q_1 = \pi_{25} = q_{1/4}$\ \ $Q_3 = \pi_{75} = q_{3/4}$
+\item $M = Q_2 = \pi_{50} = q_{1/2}$
+\end{itemize}
+\end{document}

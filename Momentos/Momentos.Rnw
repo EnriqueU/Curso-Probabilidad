@@ -1,0 +1,290 @@
+\documentclass{article}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{bigints}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath} 
+\usepackage{mathtools}
+\usepackage{latexsym}
+\geometry{verbose,tmargin=1.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfstartview={XYZ null null 1}}
+\begin{document}
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(grid)
+library(animation)
+# set global chunk options
+opts_chunk$set(fig.path='figure/minimal-', fig.align='center', fig.show='hold')
+options(formatR.arrow=TRUE,width=90)
+@
+
+\title{Introducci\'on a la Estad\'istica y Probabilidades CM-274}
+\date{}
+\maketitle
+
+\vspace{0.3cm}
+
+{\Large Momentos }
+
+\vspace{0.3cm}
+
+Para una variable aleatoria $X$ el \texttt{k-\'esimo momento} de $X$ es definido para $k = 0, 1,2, \cdots$ al n\'umero $E(X^k)$ que es la esperanza de la \texttt{k-\'esima potencia } de $X$ siempre que la esperanza  existe.
+
+La secuencia $E(X), E(X^2), \dots$ contiene mucha informaci\'on acerca de la distribuci\'on de $X$.
+
+\vspace{0.3cm}
+
+Dada la funci\'on de distribuci\'on $F_X$ de la variable aleatoria $X$, podemos calcular su momento siempre que esta exista, ya sea X discreta o continua. Lo contrario es decir dada una secuencia $E(X), E(X^2), \dots$ de momentos(finitos) de $X$ es posible reconstruir $X$ es en general no se cumple, salvo algunas condiciones extras.
+
+\vspace{0.3cm}
+
+\textbf{Teorema 1} Supongamos que todos los momentos $E(X), E(X^2)\dots$ de la variable aleatoria$X$ existen y que la serie
+
+\[
+\sum_{k = 0}^{\infty}\dfrac{1}{k!}t^kE(X^k)
+\]
+ 
+ es absolutamente convergente para alg\'un $t > 0$. Entonces la secuencia de momentos determina unicamente la distribuci\'on de $X$.
+
+\vspace{0.3cm}
+
+
+\textbf{Varianza y Covarianza}
+
+\vspace{0.3cm}
+
+La varianza de una variable aleatoria $X$ es definida como
+
+\[
+var(X) = E([X- \mu]^2), 
+\]
+
+\vspace{0.2cm}
+
+donde $\mu = E(X)$. La varianza es una medida de dispersi\'on con respecto a $\mu$, en el sentido de que si $X$ toma valores que difieren considerablemente de $\mu$, entonces el valor de $\vert X- \mu \vert$ es grande y as\'i  $E([X- \mu]^2)$ tiene un valor grande, mientras que si $X$ es cercano al valor de $\mu$, entonces $\vert X- \mu \vert$ tiene un valor que usualmente peque\~no de la misma forma que $E([X- \mu]^2)$.
+
+\vspace{0.2cm}
+
+En un caso extremo cuando $X$ es concentrado en alg\'un punto, para una variable $Y$ 
+
+\[
+E(Y^2) = 0 \ \ \leftrightarrow \ \ P(Y = 0) =1 
+\]
+
+\vspace{0.2cm}
+
+si aplicamos la ecuaci\'on anterior a $Y = X - \mu$ nos da
+
+\[
+var(X) \ \ \leftrightarrow \ \ P(X = \mu) =1 
+\]
+
+\vspace{0.2cm}
+
+de esta forma la varianza cero significa que \texttt{no hay dispersi\'on en lo absoluto}. Algunas propiedades ya vista de la varianza son las siguientes:
+
+\begin{itemize}
+\item $var(X) = E([X- \mu]^2) = E(X^2) - \mu^2$ donde $E(X) = \mu$.
+\item $var(aX + b) = a^2var(X)$.
+\end{itemize}
+
+\vspace{0.3cm}
+
+La varianza como medida de dispersi\'on tiene una propiedad no deseable: no es lineal en el sentido de que la varianza de $aX$ es $a^2$ veces la varianza de $X$, por esta raz\'on es preferible trabajar con la \texttt{desviaci\'on est\'andar} de $X$, definido como $\sqrt{var (X)}$.
+
+\vspace{0.2cm}
+
+En t\'erminos de $var(X)$ y $var(Y)$, la expresi\'on de $var(X + Y) $ es de la forma:
+
+\[
+var(X + Y) = var(X) + 2E([X -E(X)][Y -E(Y)]) +var(Y)
+\]
+
+
+\vspace{0.5cm}
+
+
+La \texttt{covarianza} de las variables aleatorias $X$ y $Y$ es la cantidad denotada por $cov(X,Y)$ y es dada por 
+
+\[
+cov(X,Y) = E([X -E(X)][Y -E(Y)]) = E(XY) -E(X)E(Y)
+\]
+
+\vspace{0.3cm}
+siempre que esas esperanzas existan.
+
+\vspace{0.3cm}
+
+Podemos agregar algunas propiedades m\'as
+
+\begin{itemize}
+\item $var(X +Y) = var(X) + 2cov(X,Y) + var(Y)$
+\item Si $X$ y $Y$ son independientes : $cov(X,Y) = 0$ y $var(X + Y) = var(X) + var(Y)$.
+\end{itemize}
+
+
+\vspace{0.3cm}
+
+La principal desventaja de la covarianza es una medida de dependencia es que no es invariante en la escala: Si $X$ y $Y$ esta\'an medidas en pulgadas y $U$ y $V$ tienen las misma medida en cent\'imetros (tal que $U = \alpha X$ y $V = \alpha Y$, donde $\alpha \sim 2.54$), entonces $cov(U,V) \sim 6cov(X,Y)$ a pesar del hecho de que el par $(X,Y)$ y $(U,V)$ miden la misma cantidad. Para tratar con esta \texttt{re-escala} de la covarianza  se define lo siguiente:
+
+
+\vspace{0.5cm}
+
+La \texttt{correlaci\'on} de las variables aleatorias $X$ y $Y$ es la cantidad $\rho(X,Y)$ dado por:
+
+\vspace{0.3cm}
+
+\[
+\rho(X,Y) = \dfrac{cov(X ,Y)}{\sqrt{var(X)var(Y)}}
+\]
+
+\vspace{0.2cm}
+
+siempre que la \'ultima cantidad exista y $var(X)var(Y) \neq 0$. Algunas propiedades de la correlaci\'on que se pueden deducir de la definici\'on son:
+
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item $\rho(aX +b, cY + d) = \rho(X,Y)$, para $a,b, c, d \in \mathbb{R}$ tal que $ac \neq 0$ (la correlaci\'on es invariante a escala).
+\item (Teorema de Cauchy-Schwarz) Si $U$ y $V$ son variables aleatorias, entonces 
+\[
+[E(UV)]^2 \leq E(U^2)E(V^2)
+\]
+siempre que las esperanzas existan.
+\item Si $X$ y $Y$ son variables aleatorias, entonces $-1 \leq \rho(X,Y) \leq 1$, siempre que a correlaci\'on exista. 
+\end{itemize}
+
+\vspace{0.3cm}
+
+Sea $a = var(X)$, $b = 2cov(X,Y$, $c = var(Y)$  y supongamos que $\rho(X,Y) \pm 1$. Entonces tenemos que  $var(X)var(Y) \neq 0$ y 
+
+\[
+b^2 - 4ac = 4var(X)var(Y)[\rho(X,Y)^2 - 1] = 0
+\]
+
+\vspace{0.2cm}
+
+y as\'i la ecuaci\'on cuadr\'atica: $as^2 + bs + c = 0$ tiene dos ra\'ices iguales en $s = \alpha$. Por tanto, $W = \alpha[X -E(X)] + [Y -E(Y)]$ satisface
+
+\[
+E(W^2) = a\alpha^2 + b\alpha + c =0
+\]
+
+\vspace{0.2cm}
+
+con $P(W =0) = 1 $ y probando que $Y = -\alpha X + \beta$, donde $\beta = \alpha E(X) + E(Y)$.
+
+\vspace{0.3cm}
+
+Un tratamiento m\'as exahustivo distingue los valores de $\pm 1$:
+
+\begin{itemize}
+\item $\rho(X,Y) = 1$ si y s\'olo si $P(Y = \alpha X + \beta$) = 1 para alg\'un real $\alpha$ y $\beta$ con $\alpha > 0$.
+\item $\rho(X,Y) = -1$ si y s\'olo si $P(Y = \alpha X + \beta$) = 1 para alg\'un real $\alpha$ y $\beta$ con $\alpha < 0$.
+\end{itemize}
+
+\vspace{0.5cm}
+
+Se usa $\rho(X,Y)$ como una medida de las dependencias de $X$ y $Y$. Si $X$ y $Y$ tienen varianza distintas de cero, entonces $\rho(X,Y)$ toma alg\'un valor en el intervalo $[-1, 1]$ y este valor debe ser interpretado de la forma en que los valores $-1, 0, 1$ surgen:
+
+\begin{itemize}
+\item Si $X$ y $Y$ son independientes entonces $\rho(X,Y) = 0$.
+\item $Y $ es una funci\'on creciente de $X$ si y s\'olo si $\rho(X,Y) = 1$.
+\item $Y $ es una funci\'on decreciente de $X$ si y s\'olo si $\rho(X,Y) = -1$.
+\end{itemize}
+
+\vspace{0.3cm}
+
+Si $\rho(X,Y) = 0$  se dice que $X$ y $Y$ son \texttt{no correlacionados}.
+
+
+\vspace{0.8cm}
+
+{\Large Funciones generadoras de momentos}
+
+\vspace{0.3cm}
+
+Si $X$ es una variable aleatoria tomando los valores en $\{ 0,1,2, \dots\}$ la funci\'on generadora de probabilidad es definida como 
+
+\vspace{0.2cm}
+
+\[
+G_X(s) = E(s^X) = \sum_{k = 0}^{\infty}s^{k}P(X =k)
+\]
+
+\vspace{0.3cm}
+
+Las funciones generadoras de probabilidad son muy \'utiles, pero s\'olo cuando las variables aleatorias relacionados toman valores enteros no negativos. Para variables aleatorias es necesario hacer una modificaci\'on de esta ecuaci\'on.
+
+\vspace{0.3cm}
+
+La \texttt{funci\'on generadora de momentos (mgf)} de la variable aleatoria de $X$ es la funci\'on $M_X$ definida como
+
+\vspace{0.2cm}
+
+\[
+M_{X}(t) = E(e^{tX})
+\]
+
+\vspace{0.2cm}
+
+para todo $t \in \mathbb{R}$ para el cual la esperanza existe.
+
+
+\vspace{0.5cm}
+
+Si $X$ toma valores en $\{0,1,2, \dots \}$, entonces
+
+\vspace{0.2cm}
+
+\[
+M_{X}(t) = E(e^{tX}) = G_{X}(e^t)
+\]
+
+\vspace{0.2cm}
+
+con la sustituci\'on de $s = e^t$. En general:
+
+\vspace{0.5cm}
+
+\[
+M_{X}(t) = E(e^{tX}) = \begin{dcases}
+\sum_{x}e^{tx}P(X =x) & \ \ \text{si}\ \ X \ \ \text{es discreta}\\
+\bigintsss_{-\infty}^{\infty}e^{tx}f_{X}(x)dx & \ \ \text{si}\ \ X \ \ \text{es continua}
+\end{dcases}
+\]
+
+\vspace{0.3cm}
+
+siempre que esta suma o integral converga absolutamente.
+
+\vspace{0.5cm}
+
+\textbf{Ejemplo} Si $X$ tiene una distribuci\'on normal con media $0$ y varianza $1$, entonces
+
+\vspace{0.3cm}
+
+
+\begin{align*}
+ M_{X}(t) &= \bigintsss_{-\infty}^{\infty}e^{tx}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}dx \\
+ &= e^{\frac{1}{2}t^2}\bigintsss_{-\infty}^{\infty}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(x -t)^2}dx \\
+ & = e^{\frac{1}{2}t^2}
+\end{align*}
+
+\vspace{0.3cm}
+
+desde que el integrando es la \'ultima integral es la funci\'on densidad de la distribuci\'on normal con media $t$ y varianza $1$, la integral tiene que ser $1$. El momento $M_{X}(t)$ existe para todo $t \in \mathbb{R}$.
+
+ \end{document}

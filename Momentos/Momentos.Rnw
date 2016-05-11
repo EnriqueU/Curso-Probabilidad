@@ -287,4 +287,216 @@ siempre que esta suma o integral converga absolutamente.
 
 desde que el integrando es la \'ultima integral es la funci\'on densidad de la distribuci\'on normal con media $t$ y varianza $1$, la integral tiene que ser $1$. El momento $M_{X}(t)$ existe para todo $t \in \mathbb{R}$.
 
+
+\vspace{0.5cm}
+
+La dificultad de la existencia de $E(e^{tX})$ puede ser evitada usando la funci\'on de variable compleja $\phi_{X}(t) = E(e^{itX})$ llamada \texttt{funci\'on caracter\'istica} de $X$ que existe para todo $t \in \mathbb{R}$.  Es importante decir que $E(e^{tX})$ existe en alguna vecindad del origen y la raz\'on est\'a contenida en el teorema de unicidad de funciones generadores de momentos. 
+
+\vspace{0.5cm}
+
+La funci\'on generadora de momentos sigue la expansi\'on que muestra que $M_{X}(t)$ es la funci\'on generadora exponencial de los momentos de $X$:
+
+
+\vspace{0.3cm}
+
+\begin{align*}
+M_{X}(t) = E(e^{tX}) = E\Bigl(1 +tX + \dfrac{1}{2!}(tX)^2 + \cdots \Bigr) \\
+ = 1 + tE(X) + \dfrac{1}{2!}t^2E(X^2) + \cdots
+\end{align*}
+
+
+\vspace{0.3cm}
+
+\textbf{Teorema 2} Si $M_{X}(t)$ existe en una vecindad de $0$, entonces para $k = 1, 2 \dots$
+
+\vspace{0.2cm}
+
+\[
+E(X^k) = M_{X}^{(k)}(0)
+\]
+
+\vspace{0.2cm}
+
+la \texttt{k-\'esima} derivada de $M_X(t)$ evaluada en $t = 0$.
+
+
+\vspace{0.6cm}
+
+Sea la funci\'on lineal $aX + b$ de la variable aleatoria $X$. Si $a ,b \in \mathbb{R}$
+
+
+\vspace{0.2cm}
+
+\begin{align*}
+M_{aX +b}(t) = E(e^{t(aX + b)}) = E(e^{atX}e^{tb}) \\
+= e^{tb}E(e^{(at)X})
+\end{align*}
+
+\vspace{0.2cm}
+
+
+lo que produce que $M_{aX + b}(t) = e^{tb}M_{X}(at)$.
+
+
+\vspace{0.5cm}
+
+\textbf{Teorema 3} Si $X$ e $Y$ son variablea aleatorias independientes, entonces $X + Y$ tiene una funci\'on generadora de momentos:
+
+\vspace{0.2cm}
+
+\[
+M_{X +Y}(t) = M_{X}(t)M_{Y}(t)
+\]
+
+
+\vspace{0.3cm}
+
+Tenemos por independencia y propiedad de la esperanza para la variable aleatoria $X$ y $Y$:
+
+\begin{align*}
+M_{X +Y}(t) = E(e^{t(x + y)}) = E(e^{tX}e^{tY}) \\
+= E(e^{tX})E(e^{tY})
+\end{align*}
+
+\vspace{0.3cm}
+
+En general la suma $S = X_1 + \cdots + X_n$ de $n$ variables aleatorias independientes tiene una funci\'on generadora de momentos de la forma:
+
+\vspace{0.2cm}
+
+\[
+M_{S}(t) = M_{X_1}(t)\cdots M_{X_n}(t)
+\]
+
+\vspace{0.5cm}
+
+
+\textbf{Teorema 4 (Unicidad)} Si la funci\'on generadora de momentos $M_{X}$ satisface $M_{X}(t) = E(e^{tX}) < \infty$ para todo $t$ satisfaciendo $-\delta < t < \delta$ para alg\'un $\delta > 0$, entonces existe una \'unica distribuci\'on con  funci\'on generadora de momentos $M_{X}$. Adem\'as bajo esta condici\'on, se tiene que $E(X^{k}) < \infty$ para $k = 1,2, \dots$ y
+
+\vspace{0.3cm}
+
+\[
+M_{X}(t) = \displaystyle\sum_{k =0}^{\infty}\dfrac{1}{k!}E(X^k) \ \ \text{para} \ \ \vert t\vert < \delta.
+\]
+
+\vspace{0.5cm}
+
+\textbf{Ejemplo} Sean $X$ e $Y$ dos variables aleatorias independiendientes, teniendo $X$ una distribuci\'on normal con par\'ametros $\mu_1$ y $\sigma_1^2$ y $Y$  una distribuci\'on normal con par\'ametros $\mu_2$ y $\sigma_2^2$, veamos que propiedades tiene la suma $Z = X +Y$:
+
+\vspace{0.3cm}
+
+Sea $U$ una variable aleatoria que tiene una distribuci\'on normal con par\'ametros $\mu$ y $\sigma^2$. La funci\'on generadora de momentos de $U$ es
+
+\vspace{0.3cm}
+
+\begin{align*}
+M_U(t) &= \bigintsss_{-\infty}^{\infty}e^{tu}\dfrac{1}{\sqrt{2\pi\sigma^2}}\exp{\Bigl(-\dfrac{1}{2\sigma^2}(u -\mu)^2}\Bigr)du \\
+=& e^{\mu t}\bigintsss_{-\infty}^{\infty}e^{x\sigma t}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}dx \ \ \ \text{sustituyendo} \ \ \ x = \dfrac{u -\mu}{\sigma}\\
+=& \exp(\mu t + \frac{1}{2}\sigma^2t^2)
+\end{align*}
+
+\vspace{0.3cm}
+
+Por el teorema 3
+
+\begin{align*}
+M_{Z}(t) = M_{X}(t)M_{Y}(t) \\
+ = \exp{(\mu_1 t + \frac{1}{2}\sigma_1^2t^2)}\exp{(\mu_2 t + \frac{1}{2}\sigma_2^2t^2)} \\
+ =\exp\Bigl[ (\mu_1 + \mu_2)t + \frac{1}{2}(\sigma_1^2 + \sigma_2^2)t^2\Bigr]
+\end{align*}
+
+\vspace{0.3cm}
+
+Luego se deduce que es la funci\'on generadora de momentos  de la distribuci\'on normal con par\'ametros $\mu_1 + \mu_2$ y $\sigma_1^2 + \sigma_2^2$. As\'i $Z$ tiene esta distribuci\'on  apelando al teorema de unicidad.
+
+\vspace{0.8cm}
+
+{\Large Algunos resultados}
+
+\vspace{0.3cm}
+
+Sea $-\infty \leq a < b < \infty$ una funci\'on $g: (a ,b) \rightarrow \mathbb{R}$ es \texttt{convexa} si
+
+\vspace{0.2cm}
+
+\[
+g([1 -t]u + tv) \geq (1 -t)g(u) + tg(v)
+\]
+
+\vspace{0.2cm}
+
+para $t \in [0,1]$ y $u, v \in (a,b)$.
+
+
+\vspace{0.5cm}
+
+
+Presentamos el teorema de soporte de hiperplanos que servir\'a para la desigualdad de Jensen, basado en el gr\'afico siguiente
+
+\vspace{0.2cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.55]{j1.png}
+\end{figure}
+
+\vspace{0.3cm}
+
+\textbf{Teorema 5} Sea $g:(a,b) \rightarrow \mathbb{R}$ convexa y sea $w \in (u,v)$. Entonces existe un $\alpha \in \mathbb{R}$ tal que 
+
+\vspace{0.2cm}
+
+\[
+g(x) \geq g(w) + \alpha(x -w)\ \ \text{para}\ \ \ x\in (a,b)
+\]
+
+
+\vspace{0.5cm}
+
+\textbf{Desigualdad de Jensen} Sea $X$ una variable aleatoria que toma valores en el intervalo (posiblemente infinito) $(a ,b)$ tal que $E(X)$ existe y sea $g:(a, b)\rightarrow \mathbb{R}$ una funci\'on convexa tal que $E\vert g(X) \vert < \infty$. Entonces
+
+\vspace{0.2cm}
+
+\[
+E(g(X)) \geq g(E(X)).
+\]
+
+\vspace{0.5cm}
+
+Sea $X$ que toma valores en $(a ,b)$ con media $\mu = E(X)$. Sea $g$ una funci\'on convexa sobre este intervalo satisfaciendo $E\vert g(X) \vert < \infty$. Por el teorema 5 con $w = \mu$ existe un $\alpha \in \mathbb{R}$ tal que $g(x) \geq g(\mu) + \alpha(x -\mu)$. Por tanto $g(X) \geq g(\mu) + \alpha(X -\mu)$. Tomando esperanza, obtenemos $E(g(X) \geq g(\mu)$.
+
+\vspace{0.3cm}
+
+
+\textbf{Ejemplo} La funci\'on $g(x) = -\log x$ es convexa en el intervalo $(0, \infty)$. Por la desigualdad de Jensen aplicada a una variable aleatoria $X$ positiva con media finita
+
+\vspace{0.3cm}
+
+\[
+E(\log X) \leq \log(E(X))
+\]
+
+\vspace{0.3cm}
+
+Supongamos que $X$ es una variable aleatoria discreta que es igual de probable de tener los valores $x_1, x_2, \dots, x_n$. Entonces
+
+\vspace{0.2cm}
+
+\[
+E(\log X) =\dfrac{1}{n}\displaystyle\sum_{i = 1}^{n}\log x_i = \log \gamma, \ \ \ E(X) = \overline{X}
+\]
+
+\vspace{0.3cm}
+
+donde 
+
+\vspace{0.3cm}
+
+\[
+\gamma = \Bigl( \prod_{i=1}^{n}x_i\Bigr)^{1/n}, \ \ \ \ \ \  \overline{x} = \dfrac{1}{n}\displaystyle\sum_{i=1}^{n}x_i
+\]
+
+\vspace{0.2cm}
+
+son la media geom\'etrica y aritm\'etica de los valores $x_i$ respectivamente, con la propiedad que $\log \gamma \leq \log \overline{X}$ que conduce a que  $\gamma \leq \overline{x}$.
  \end{document}

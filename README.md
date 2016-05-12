@@ -1,5 +1,15 @@
 # Curso de Probabilidad y Estadística
 
+## Temas
+
+1. Probabilidad.
+2. Variables aleatorias.
+3. Momentos.
+4. Variables aleatorias multivariadas.
+5. Desigualdades y teoremas límites.
+6. Simulación y método de Montecarlo.
+7. Caminos aleatorios.
+
 ## Libros y artículos
 
 - [Introduction to Probability ](http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/pdf.html).

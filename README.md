@@ -8,7 +8,8 @@
 4. Variables aleatorias multivariadas.
 5. Desigualdades y teoremas límites.
 6. Simulación y método de Montecarlo.
-7. Caminos aleatorios.
+7. Procesos estocásticos
+8. Caminos aleatorios.
 
 ## Libros y artículos
 

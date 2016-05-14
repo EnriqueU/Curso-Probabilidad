@@ -10,6 +10,8 @@
 6. Simulación y método de Montecarlo.
 7. Procesos estocásticos
 8. Caminos aleatorios.
+9. Introducción a la Estadística.
+10. Inferencia estadística.
 
 ## Libros y artículos
 

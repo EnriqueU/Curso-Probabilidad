@@ -336,5 +336,129 @@ Se dice que $Y_n = O_P(a_n)$ si $Y_n/a_n = O_p(1)$. Sean $Y_1, Y_2, \dots, Y_n$ 
 \hat{p_n} = \frac{1}{n}\sum_{i = 1}^{n}Y_i
 \]
 Se prueba que: $\hat{p_n} - p = o_P(1)$ y   $\hat{p_n} - p = O_P(1/\sqrt{n})$.
+
+\vspace{0.8cm}
+
+
+{\Large{La ley de promedios}}
+
+\vspace{0.5cm}
+
+Si lanzamos un dado $5$ millones de veces y se mantiene un registro de los datos. El promedio de los n\'umeros  los cuales fueron lanzados es $3.500867$. Desde que la media de cada lanzamiento es $\frac{1}{6}(1 + 2 + \cdots +6) = 3\frac{1}{2}$, este resultado muestra  que para un $x_i$ el $i$ \'esimo lanzamiento, el promedio
+
+\vspace{0.3cm}
+
+\[
+a_n = \dfrac{1}{n}(x_i + x_2 + \cdots + x_n)
+\]
+
+\vspace{0.3cm}
+
+se acerca a la media $3\dfrac{1}{2}$, cuando $n \rightarrow \infty$.
+
+\vspace{0.2cm}
+
+En general si tenemos una secuencia $X_1, X_2, \dots$ de variables aleatorias identicamente distribuidas e independientes cada una teniendo una media $\mu$, deberiamos probar que el promedio
+
+\vspace{0.3cm}
+
+\[
+\dfrac{1}{n}(X_1 + X_2 +\cdots +X_n)
+\]
+
+\vspace{0.2cm}
+
+converge cuando $n \rightarrow \infty$ a la media $\mu$.
+
+\vspace{0.5cm}
+
+\textbf{Definici\'on} Decimos que la secuencia $x_1, x_2, \dots$ de variables aleatorias \texttt{converge en media  cuadrada a la variables x} si
+
+\vspace{0.3cm}
+
+\[
+E([X_n - x]^2)\rightarrow 0 \ \ \text{cuando}\ \ n\rightarrow \infty
+\]
+
+\vspace{0.2cm}
+
+y se escribe \texttt{$X_n \rightarrow x$ en media cuadrada cuando $n \rightarrow \infty$}.
+
+\vspace{0.5cm}
+
+
+\textbf{Ejemplo} Sea $X_n$ una secuencia de variables aleatorias discretas con un \texttt{pmf}
+
+\vspace{0.2cm}
+
+\[
+P(X_n = 1) =  \dfrac{1}{n},  \ \ \ \ P(X_n = 2) = 1 - \dfrac{1}{n}.
+\]
+
+\vspace{0.2cm}
+
+Entonces $X_n$ converge a la variable aleatoria $2$ en media cuadrada cuando $n \rightarrow \infty$, desde que
+
+\vspace{0.3cm}
+
+\begin{align*}
+E([X_n - 2]^2) = (1 -2)\dfrac{1}{n} + (2 -2)^2\Bigl(1 - \dfrac{1}{n}\Bigr)\\
+= \dfrac{1}{n} \rightarrow 0 \ \ \ \text{cuando}\ \ n \rightarrow \infty.
+\end{align*}
+
+
+\vspace{0.8cm}
+
+
+\textbf{Ley de los grandes n\'umeros(1)} Sea una secuencia $X_1, X_2, \dots $ una secuencia de variables independientes cada una con media $\mu$ y varianza $\sigma^2$. El promedio de los primeros $n$ de las $X_i$ satisfacen cuando $n \rightarrow \infty$.
+
+\vspace{0.3cm}
+
+\[
+\dfrac{1}{n}(X_1 +X_2 + \cdots + X_n) \rightarrow \mu \ \ \ \text{en media cuadrada}.
+\]
+
+
+\vspace{0.5cm}
+
+
+Sea $S_n = X_1 + X_2 + \cdots X_n$, la n-\'esima suma parcial de los $X_i$. Entonces
+
+\vspace{0.3cm}
+
+\[
+E\Bigl(\dfrac{1}{n}S_n\Bigr) = \dfrac{1}{n}E(X_1 +X_2 + \cdots + X_n) = \dfrac{1}{n}n\mu = \mu.
+\]
+
+\vspace{0.3cm}
+
+y as\'i
+
+\vspace{0.3cm}
+
+\begin{align*}
+E\Bigl(\Bigl[\dfrac{1}{n}S_n - \mu \Bigr]^2\Bigr) &= var\Bigl(\dfrac{1}{n}S_n\Bigr)\\
+  &= \dfrac{1}{n^2}var(X_1 +X_2 + \cdots + X_n)\\
+  &= \dfrac{1}{n^2}(var X_1 + \cdots  + var X_n)\\
+  &=\dfrac{1}n{n^2}\sigma^2 = \dfrac{1}{n}\sigma^2 \rightarrow 0 \ \ \ \text{cuando}\ \ n \rightarrow \infty
+\end{align*}
+
+\vspace{0.3cm}
+
+y as\'i, $n^{-1}S_n \rightarrow \mu$ en media cuadr\'atica cuando $n \rightarrow \infty$.
+
+\vspace{0.5cm}
+
+\textbf{Definici\'on} Decimos que la secuencia de variables aleatoria $X_1, X_2, \dots$ de variables aleatorias \texttt{converge en probabilidad } a $X$ si
+
+\vspace{0.3cm}
+
+\[
+\texttt{Para todo} \ \ \epsilon >0 \ \ \ P(\vert X_n - X\vert > \epsilon) \rightarrow \ \ \text{cuando}\ \ n \rightarrow \infty
+\]
+
+\vspace{0.3cm}
+
+Si esto se cumple, escribimos \texttt{$X_n \rightarrow X$ en probabilidad cuando $n \rightarrow \infty$ }
 \end{document}
 

@@ -614,7 +614,7 @@ de la suma $S_n = X_1 +X_2 + \cdots + X_n$, satisface cuando $n \rightarrow \inf
 \vspace{0.3cm}
 
 \[
-P(Z_n \leq x) \rightarrow \bigintss_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}u^2}du\ \ \ \text{para}\ \ x\in \mathbb{R}
+P(Z_n \leq x) \rightarrow \bigintss_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}u^2}du\ \ \ \text{para}\ \ x\in \mathbb{R}.
 \]
 
 \vspace{0.2cm}
@@ -630,5 +630,50 @@ P(Z_n \leq x) \rightarrow P(Y \leq x) \ \ \ \text{para}\ \ x \in \mathbb{R}.
 \vspace{0.2cm}
 
 donde $Y$ es la variable aleatoria con esta distribuci\'on normal est\'andar.
+
+
+\vspace{0.2cm}
+
+Para la prueba(parcial) de este teorema usaremos el m\'etodo de las funciones generadoras de momentos
+
+\vspace{0.5cm}
+
+\textbf{Teorema de continuidad} Sea $X_1, X_2, \dots$ una secuencia de variables aleatorias con funciones generadores de momentos $M_1, M_2, \dots$ y suponiendo que para $n \rightarrow \infty$
+
+\vspace{0.3cm}
+
+\[
+M_n(t) \rightarrow e^{\frac{1}{2}t^2}\ \  \text{para } \ \ t\in \mathbb{R}
+\]
+
+\vspace{0.2cm}
+
+Entonces
+
+\vspace{0.2cm}
+
+\[
+P(Z_n \leq x) \rightarrow \bigintss_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}u^2}du \ \ \ \text{para}\ \ x\in \mathbb{R}.
+\]
+
+\vspace{0.3cm}
+
+En otras palabras, la funci\'on distribuci\'on de $Z_n$ converge a la funci\'on distribuci\'on de la distribuci\'on  normal si la funci\'on generadora de momentos de $Z_n$ converge a la funci\'on generadora de momentos de la distribuci\'on normal. 
+
+\vspace{0.2cm}
+
+Usamos estas propiedades  para probar el \texttt{teorema del l\'imite central} en el caso que las $X_i$ tienen una funci\'on generadora de momentos
+
+\vspace{0.3cm}
+
+
+\[
+M_{X}(t) = E(\exp(tX_i))\ \ \ \text{para}\ \  i=1,2 \dots
+\]
+
+\vspace{0.2cm}
+
+
+haciendo hincapi\'e en que el teorema del l\'imite central es v\'alida incluso cuando esta esperanza no existe, siempre que la media y la varianza de la $X_i$ sean finitas.
 \end{document}
 

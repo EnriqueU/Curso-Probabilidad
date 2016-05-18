@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{geometry}
+\usepackage{bigints}
 \geometry{verbose,tmargin=1.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
@@ -460,5 +461,174 @@ y as\'i, $n^{-1}S_n \rightarrow \mu$ en media cuadr\'atica cuando $n \rightarrow
 \vspace{0.3cm}
 
 Si esto se cumple, escribimos \texttt{$X_n \rightarrow X$ en probabilidad cuando $n \rightarrow \infty$ }
+
+\vspace{0.5cm}
+
+
+\textbf{Teorema } Si $X_1, X_2, \dots $ es una secuencia de variables aleatorias y $X_n \rightarrow X$ en media cuadrada cuando $n \rightarrow \infty$ entonces $X_n \rightarrow X$ en probabilidad.
+
+
+\vspace{0.5cm} 
+
+Para hacer la prueba de este teorema, escribamos la \texttt{la desigualdad de Chebyshev} de la siguiente manera
+
+\vspace{0.3cm}
+
+Si $Y$ es una variable aleatoria y $E(Y^2) < \infty$, entonces
+
+\vspace{0.2cm}
+
+\[
+P(\vert Y \vert \geq t) \leq \dfrac{1}{t^2}E(Y^2)\ \ \ \text{para}\ \ \ t >0
+\]
+
+
+\vspace{0.5cm}
+
+Luego aplicando la desigualdad de Chebyshev a la variable aleatoria $Y = X_n - X$ para encontrar que 
+
+\vspace{0.3cm}
+
+\[
+P(\vert X_n -X\vert > \epsilon) \leq \dfrac{1}{\epsilon^2}E([X_n -X]^2)\ \ \ \epsilon > 0.
+\]
+
+\vspace{0.3cm}
+
+Si $X_n \rightarrow X$ en media cuadrada cuando $n \rightarrow \infty$, el lado derecho de la desigualdad tiende a $0$ cuando $n \rightarrow \infty$ y as\'i tiende a $0$ para todo $\epsilon > 0$, como es requerido. El caso contrario no se cumple.
+
+\vspace{0.8cm}
+
+\textbf{Ley d\'ebil de los grandes n\'umeros} Sea $X_1, X_2, \dots$ una secuencia de variables aleatorias, cada una con media $\mu$ y varianza $\sigma^2$. El promedio de los primeros $n$ de los $X_i$ satisface, cuando $n \rightarrow \infty$
+
+\vspace{0.3cm}
+
+\[
+\dfrac{1}{n}(X_1 +X_2 + \cdots + X_n) \rightarrow \mu \ \ \ \text{en probabilidad}.
+\]
+
+\vspace{0.5cm}
+
+
+\textbf{Ejemplo} Sea $X_n$ una secuencia de variables aleatorias que convergen en probabilidad, pero  no en media cuadrada con un \texttt{pmf}
+
+
+\vspace{0.3cm}
+
+\[
+P(X_n = 0) =  1 - \dfrac{1}{n},  \ \ \ \ P(X_n = n) = \dfrac{1}{n}.
+\]
+
+
+\vspace{0.2cm}
+
+Entonces, para $\epsilon > 0$ y para $n$ dado 
+
+\vspace{0.2cm}
+
+
+\[
+P(\vert X_n\vert > \epsilon) = P(X_n = n) = \dfrac{1}{n} \rightarrow 0 \ \ \ \text{cuando}\ \ n \rightarrow \infty
+\]
+
+\vspace{0.2cm}
+
+dando que $X_n \rightarrow \infty $ en probabilidad. Por otro lado 
+
+\vspace{0.2cm}
+
+\begin{align*}
+E([X_n - 0]^{2}) = E(X_n^2) = 0\Bigl(1 -\dfrac{1}{n}\Bigr) + n^2\dfrac{1}{n}\\
+= n \rightarrow \infty \ \  \text{cuando} \ \ n \rightarrow \infty.
+\end{align*}
+
+\vspace{0.2cm}
+
+as\'i $X_n$ no converge a $0$ en media cuadrada.
+
+
+\vspace{0.8cm}
+
+\textbf{Teorema del l\'imite central} Sea $X_1, X_2, \dots $ variables aleatorias identicamente distribuidas e independientes cada una con media $\mu$ y varianza distinta de cero $\sigma^2$. Por la ley de los grandes n\'umeros, la suma $S_n = X_1 +X_2+ \cdots +X_n$ es casi tan grande que $n\mu$ para valores de $n$ muy grandes. Un siguiente paso es determinar el orden de la diferencia $S_n - n\mu$, que resulta ser de orden $\sqrt{n}$.
+
+\vspace{0.2cm}
+
+Se define la versi\'on est\'andar de $S_n$
+
+\vspace{0.2cm}
+
+\[
+Z_n = \dfrac{S_n -E(S_n)}{\sqrt{var(S_n)}}
+\]
+
+\vspace{0.2cm}
+
+Esta es una funci\'on lineal $Z_n = a_nS_n + b_n$ de $S_n$, donde $a_n$ y $b_n$ tienen que ser elegida de manera que $E(Z_n) = 0$ y $var(Z_n) = 1$. Adem\'as
+
+\vspace{0.2cm}
+
+\begin{align*}
+E(S_n ) &= E(X_1) + E(X_2) + \cdots + E(X_n )\\
+&= n\mu
+\end{align*}
+
+\vspace{0.3cm}
+
+
+Tambi\'en 
+
+\vspace{0.2cm}
+
+\begin{align*}
+var(S_n) &= var(X_1) + var(X_2) + \cdots +var(X_n)\\
+&= n\sigma^2
+\end{align*}
+
+\vspace{0.2cm}
+
+y as\'i
+
+\vspace{0.2cm}
+
+\[
+Z_n = \dfrac{S_n - n\mu}{\sigma\sqrt{n}}
+\]
+
+
+Muchas de las propiedades de $Z_n$ se pueden sintetizar en el teorema de l\'imite central:
+
+\vspace{0.3cm}
+
+Sean $X_1, X_2, \dots $ variables aleatorias identicamente distribuidas e independiente, cada una con media $\mu$ y varianza distinta de cero $\sigma^2$. La vesrsi\'on est\'andar 
+
+\vspace{0.2cm}
+
+\[
+Z_n = \dfrac{S_n - n\mu}{\sigma\sqrt{n}}
+\]
+
+\vspace{0.2cm}
+
+de la suma $S_n = X_1 +X_2 + \cdots + X_n$, satisface cuando $n \rightarrow \infty $.
+
+\vspace{0.3cm}
+
+\[
+P(Z_n \leq x) \rightarrow \bigintss_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}u^2}du\ \ \ \text{para}\ \ x\in \mathbb{R}
+\]
+
+\vspace{0.2cm}
+
+El lado derecho de la \'ultima de la ecuaci\'on es s\'olo la funci\'on de distribuci\'on de la distribuci\'on normal con media $0$ y varianza $1$, as\'i que esta expresi\'on se puede escribir como
+
+\vspace{0.2cm}
+
+\[
+P(Z_n \leq x) \rightarrow P(Y \leq x) \ \ \ \text{para}\ \ x \in \mathbb{R}.
+\]
+
+\vspace{0.2cm}
+
+donde $Y$ es la variable aleatoria con esta distribuci\'on normal est\'andar.
 \end{document}
 

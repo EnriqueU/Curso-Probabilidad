@@ -11,6 +11,7 @@
 \setcounter{tocdepth}{2}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{fancyvrb}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
@@ -711,7 +712,7 @@ Si se confirma que una observaci\'on sospechosa entr\'o en el conjunto de datos 
 {\Large Gr\'aficos estad\'isticos}
 
 
-\vspace{0.8cm}
+\vspace{0.5cm}
 
 
 \textbf{Histogramas}
@@ -725,8 +726,101 @@ Los histogramas muestran la forma de un \texttt{pmf} o \texttt{pdf} de la data, 
 \item Un \texttt{histograma de frecuencia} consiste de columnas, una para cada intervalo, cuyo altura es determinada por el n\'umero de observaciones en el intervalo.
 \item Un \texttt{histograma de frecuencias relativas} tiene la misma forma pero tiene una escala vertical diferente. La altura de las columnas representan la proporci\'on de todos los datos que aparecen en cada intervalo.
 
-
 \end{itemize}
+
+La muestra de los tiempos de demora de los CPU, cuenta desde los $9$ y $139$ segundos. Escogiendo los intervalos $[0, 14], [14, 28], [28, 42], \dots$, contamos
+
+\begin{figure}[h]
+\centering
+\begin{BVerbatim}
+ 1 observacion   entre 0 y 14
+ 5 observaciones entre 14 y 28 
+ 9 observaciones entre 28 y 42
+ 7     "           "   42 y 56
+ 4     "           "   56 y 70
+\end{BVerbatim}
+\end{figure}
+
+\vspace{0.8cm}
+
+\textbf{Mezcla de distribuciones}
+
+\vspace{0.3cm}
+
+La mezcla de distribuciones aparecen en poblaciones heterog\'eneas que consisten de varios grupos: estudiantes graduados y no graduados, el tr\'afico de internet de dia o de noche, etc. En tales casos podemos estudiar cada grupo de forma separada, o usar la \texttt{la ley de probabilidad total} escribiendo el \texttt{cdf} como
+
+\vspace{0.3cm}
+
+\[
+F(x) = p_1F_1(x) + p_2F_2(x) + \dots,
+\]
+
+\vspace{0.2cm}
+
+y estudiar toda la poblaci\'on entonces.
+
+\vspace{0.3cm}
+
+La siguiente figura indica que la muestra proviene de una mezcla de dos distribuciones normales, con media $\mu_1$ y $\mu_2$ con una alta probabilidad de tener una media $\mu_1$, desde que la curva a la derecha es mayor:
+
+\vspace{0.3cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{g5.png}
+\end{figure}
+
+\vspace{0.8cm}
+
+\textbf{Diagrama de cajas }
+
+\vspace{0.3cm}
+
+Las principales par\'ametros de estad\'stica descriptiva  de una muestra pueden ser representados gr\'aficamente mediante un diagrama de caja. Para construir un diagrama de cajas, se dibuja un cuadro entre el primer y el tercer cuartil, una l\'inea dentro de la caja para la  mediana, y se extiende los \texttt{whiskers (bigotes)} para los valores   m\'as peque\~nos y m\'as grandes de las  observaciones, lo cual se  resumen  de la siguiente manera:
+
+\vspace{0.2cm}
+
+\[
+\texttt{resumen} = \Bigl(\min X_i,\ \hat{Q_1},\  \hat{M},\  \hat{Q_3},\  \max X_i \Bigr).
+\]
+
+\vspace{0.2cm}
+
+La media $\overline{X}$ es a menudo representada por puntos o cruces. Observaciones m\'as all\'a de que el rango  $1.5$ intercuartil son usualmente separados de los whiskers, indicando la posibilidad de outliers. Esto de es de acuerdo a la regla $1.5(IQR)$.
+
+\vspace{0.5cm}
+
+La media y el resumen para los tiempos de uso del CPU, en los ejemplos anteriores, producen: 
+
+\vspace{0.2cm}
+
+$\overline{X} = 48.2333, \min X_i = 9,  \hat{Q_1} = 34,   \hat{M} = 42.5, \hat{Q_3} = 59, \max X_i = 139$
+
+\vspace{0.2cm}
+
+
+Se sabe adem\'as que $X = 139$ es m\'as que $1.5(\widehat{IQR})$ de la distancia al tercer cuartil, lo que invita a que es un outlier.
+
+
+\vspace{0.3cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{g6.png}
+\end{figure}
+
+\vspace{0.3cm}
+
+Un diagrama de cajas es mostrado en la figura anterior. La media es representada por un \texttt{'+'} el whiskers de la derecha se extiende hasta la segunda mayor observaci\'on $X = 89$, ya que $X = 139$, se espera ser un outlier (representado por el peque\~no c\'irculo).
+
+Desde este diagrama de cajas, uno puede concluir que:
+
+\begin{itemize}
+\item La distribuci\'on de los tiempos del CPU es sesgada a la derecha debido a que la media supera a la mediana, y el lado derecho  de la caja es mayor que el lado  izquierdo.
+\item Cada mitad  de una caja y cada whiskers representa aproximadamente el $25\%$ de la poblaci\'on. Por ejemplo, se espera que aproximadamente el $25\%$ de todos los tiempos del  CPU  est\'en ente $42,5$ y $59$ segundos.
+\end{itemize}
+
+\vspace{0.5cm}
 
 
 \end{document}

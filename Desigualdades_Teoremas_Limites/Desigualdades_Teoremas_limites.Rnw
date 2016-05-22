@@ -35,14 +35,6 @@ options(formatR.arrow=TRUE,width=90)
 \date{}
 \maketitle
 
-\textbf{Lecturas} 
-
-\texttt{Probability Inequalities}- Lin, Zhengyan, Bai, Zhidong 2011.  Springer.
-
-\texttt{Divergencia de Kullback-Leibler} \url{https://es.wikipedia.org/wiki/Divergencia_de_Kullback-Leibler}.
-
-\texttt{Informaci\'on en R acerca de la distancia de Kullback-Leibler} \url{http://www.inside-r.org/packages/cran/FNN/docs/KL.divergence}
-
 \setlength{\unitlength}{1in}
 \begin{picture}(6,.1) 
 \put(0,0) {\line(1,0){6.25}}         
@@ -51,62 +43,213 @@ options(formatR.arrow=TRUE,width=90)
 
 \vspace{0.5cm}
 
-Las desigualdades en Probabilidad, es un cap\'itulo de la Teor\'ia de las Probabilidades muy importante, lleno de aplicaciones te\'oricas y pr\'acticas.  
+Las desigualdades y el comportamiento asint\'otico de secuencias de variables aleatorias es un parte importante de la teoria de las probabilidades. El principal contexto  involucra una secuencia $X_1, X_2, \dots $ de variables aleatorias independientes id\'enticamente distribuidas con media $\mu$ y varianza $\sigma^2$.  
 
-Por ejemplo la \textit{desigualdad de Hoeffding} puede aplicarse al caso especial de variables de Bernoulli id\'enticamente distribuidas, y esta es la manera en que se  aplica frecuentemente en combinatoria y en inform\'atica, la desigualdad de Chebyshev, ofrece una cota inferior a la probabilidad de que el valor de una variable aleatoria est\'e a cierta distancia de sus esperanza, bajo ciertas condiciones, etc.
+
+\vspace{0.3cm}
+
+Las desigualdades y los teoremas l\'imite son importantes por varias razones
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Las desigualdes como es el caso de  la \textit{desigualdad de Hoeffding} puede aplicarse al caso especial de variables de Bernoulli id\'enticamente distribuidas, que es la manera en que se  aplica frecuentemente en combinatoria y en inform\'atica. 
+\item Los teoremas l\'imite proporcionan conceptualmente una interpretaci\'on de la probabilidad y esperanza, en t\'erminos de secuencias independiente y id\'enticas.
+\item Juegan un rol en Inferencia y estad\'istica, en la presencia de grandes conjuntos de datos.
+\end{itemize}
 
 \vspace{0.2cm}
 
 En esta secci\'on presentamos algunas de las m\'as importantes desigualdades de la Teor\'ia de las \mbox{Probabilidades} y ciertas aplicaciones que conllevan.
 
-\vspace{0.3cm}
-
-\textbf{La desigualdad  Gaussiana} Sea $X \sim N(0,1)$ entonces
-\[
-\mathbb{P}(\vert X \vert > \epsilon) \leq \frac{2e^{-\epsilon^2/2}}{\epsilon}
-\]
-
-Si $X_1, \dots, X_n \sim N(0,1)$ entonces
-
-\[
-\mathbb{P}(\vert \overline{X_n}\vert > \epsilon) \leq \frac{2}{\sqrt{n}\epsilon}e^{-n\epsilon^2/2}
-\]
 
 
-\vspace{0.3cm}
+\vspace{0.5cm}
 
 \textbf{Desigualdad de Markov} Sea $X$ es una variable no negativa y supongamos que  $\mathbb{E}(X)$ existe. 
 
 \[
-\mathbb{P}(X > t)\leq \frac{\mathbb{E}(X)}{t}.
+\mathbb{P}(X > a)\leq \frac{\mathbb{E}(X)}{a}.
 \]
-Para alg\'un $t > 0$.
+
+\vspace{0.2cm}
+
+Para alg\'un $a > 0$.
+
+\vspace{0.2cm}
+
+
+Fijemos un n\'umero positivo $a$ y consideremos una variable aleatoria $Y_a$ definida
+
+\vspace{0.2cm}
+
+\[
+Y_a = \begin{cases}
+0, & \text{si}\ \ X  < a\\
+a, & \text{si}\ \ X \leq a
+\end{cases}
+\]
+
+\vspace{0.2cm}
+
+Luego 
+
+\vspace{0.2cm}
+
+\[
+Y_a \leq X
+\]
+
+
+\vspace{0.2cm}
+
+lo que implica 
+
+\vspace{0.2cm}
+
+\[
+E(Y_a) \leq E(X)
+\]
+
+\vspace{0.2cm}
+
+\[
+E(X) \geq E(Y_a) = aP(Y_a = a) = aP(X \geq a)
+\]
+
+\vspace{0.2cm}
+
+Por tanto : 
+
+\vspace {0.2cm}
+
+\[
+aP(X \leq a) \leq E(X).
+\]
+
+\newpage
+
+Este resultado es ilustrado mediante el siguiente gr\'afico
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.55]{m1.png}
+\end{figure}
 
 \vspace{0.3cm}
 
-\textbf{Desigualdad de Chebyshev} Sea $\mu = \mathbb{E}(X)$ y $\sigma^2 = V(X)$. Entonces
+Donde en la parte a) muestra el \texttt{pdf} de una variable aleatoria no negativa $X$. La parte b) muestra el \texttt{pmf} de una variable $Y_a$, que se construye de la siguiente manera: Toda la masa de probabilidad en el \texttt{pdf} de X que se encuentra entre $0$ y $a$ se asigna a $0$, y toda la masa que se encuentra por encima de $a$ es asignada a $a $ Puesto que la masa se desplaza a la izquierda, la esperanza s\'olo puede disminuir.
+
+
+\vspace{0.3cm}
+
+\textbf{Ejemplo} Sea $X$ la variable aleatoria que denota la edad  (en a\~nos) de un ni\~no de un determinado colegio. Si la edad promedio de edad de ese colegio es $12.5$ a\~nos, entonces usando la desigualdad de Markov, la probabilidad que un ni\~no es tiene por lo menos 20 a\~nos satisface la desigualdad 
+
+\vspace{0.2cm}
+
+\[
+P(X \geq 20) \leq 12.5/20 = 0.6250?
+\]
+
+\vspace{0.5cm}
+
+En general si $X$ es una variable aleatoria y $h$ una funci\'on no decreciente  y no negativa. La esperanza $h(X)$ asumiendo que existe, es dada por
+
+\vspace{0.3cm}
+
+\[
+E(h(X)) = \bigintsss_{-\infty}^{\infty}h(u)f_{X}(u)du
+\]
+
+\vspace{0.2cm}
+
+y escribimos 
+
+\vspace{0.2cm}
+
+\[
+\bigintsss_{-\infty}^{\infty}h(u)f_{X}(u)du \geq \bigintsss_{a}^{\infty}h(u)f_{X}(u)du \geq h(a)\bigintsss_{t}^{\infty}f_{X}(u)du = h(a)P(X \geq a).
+\]
+
+\vspace{0.3cm}
+
+Esto conduce a la desigualdad de Markov: $P(X \geq a) \leq \dfrac{E(h(X))}{h(a)} $ para $a > 0$.
+
+
+
+
+\vspace{0.5cm}
+
+La desigualdad de Chebyshev, dice que si una variable aleatoria tiene una peque\~na varianza, entonces la probabilidad que toma un valor lejos de la media es tambi\'en peque\~na.
+
+\vspace{0.5cm}
+
+\textbf{Desigualdad de Chebyshev} Sea $\mu = \mathbb{E}(X)$ y $\sigma^2 = V(X)$. Entonces para un $t > 0$
+
+\vspace{0.2cm}
+
 \[
 \mathbb{P}(\vert X- \mu \vert \geq t) \leq \frac{\sigma^2}{t^2}\qquad y \qquad \mathbb{P}(\vert Z \vert \geq k) \leq \frac{1}{k^2}.
 \]
+
+\vspace{0.2cm}
+
 donde $Z = (X - \mu)/\sigma$. En particular $\mathbb{P}(\vert Z \vert > 2) \leq 1/4$ \qquad y \qquad  $\mathbb{P}(\vert Z \vert > 3) \leq 1/9$.
 
 \vspace{0.5cm}
 
-\textbf{\large{Desigualdad de Hoeffding}}
+Aplicando la desigualdad de Markov, podemos concluir que
+
+\vspace{0.2cm}
+
+\[
+P((X -\mu)^2 \leq t^2) \leq \dfrac{E(X -\mu)^2}{t^2} = \dfrac{\sigma^2}{t^2}.
+\]
 
 \vspace{0.3cm}
 
-Para hacer una demostraci\'on de este resultado se debe recordar que se dice que una funci\'on $g$ es convexa, si para cada $x, y$ para cada $\alpha \in [0,1]$.
+Para completar el evento $(X - \mu)^2 \geq t^2$ es id\'entico al evento $\vert X - \mu\vert \geq t$, as\'i
+
+\vspace{0.2cm}
 
 \[
-g(\alpha x + (1 -\alpha)y) \leq \alpha g(x) + (1 -\alpha)g(y).
+P(\vert X - \mu \vert \leq t) = P((X -\mu)^2 \leq t^2) \leq \dfrac{\sigma^2}{t^2}.
+\]
+
+Para la segunda parte se coloca $t = k\sigma$.
+
+\vspace{0.3cm}
+
+\textbf{Ejemplo} Supongamos que probamos un modelo de predicci\'on sobre un conjunto de $n$  casos de prueba. Sea $X_i = 1$ si el predictor es incorrecto y $X_i = 1$ si el predictor es correcto. Entonces $\overline{X}_n = n^{-1}\displaystyle\sum_{i =1}^{n}X_i$ es la taza de error observado. Cada $X_i$ puede ser considerado una variable de Bernoulli con media desconocida $p$. Intuitivamente $\overline{X}_n$ debe ser cercano a $p$, pero que tan probable es que $\overline{X}_n$ est\'e fuera de un entorno de tama\~no $\epsilon$, sabiendo que $V(\overline{X}_n =V(X_1)/n = p(1 -p)/n$ y
+
+
+\vspace{0.3cm}
+
+
+\[
+P(\vert \overline{X}_n -p \vert > \epsilon) \leq \dfrac{V(\overline{X}_n)}{\epsilon^{2}} = \dfrac{p(1 -p)}{n\epsilon^2} \leq \dfrac{1}{4n\epsilon^2}
 \]
 
 
 \vspace{0.3cm}
 
+desde que $p(1 -p) \leq \frac{1}{4}$ para todo $p$. Para $\epsilon = .2$ y $n = 100$, la cota es $.0625$.
 
-\textbf{Propiedad} Supongamos que $\mathbb{E}(X) = 0$ y que $a \leq x \leq b$. Entonces
+\vspace{0.8cm}
+
+\textbf{\large{Desigualdad de Hoeffding}}
+
+
+\vspace{0.3cm}
+
+Empezamos con un resultado importante
+
+\vspace{0.5cm}
+
+
+\textbf{Propiedad 1} Supongamos que $\mathbb{E}(X) = 0$ y que $a \leq x \leq b$. Entonces
+
+\vspace{0.3cm}
 
 \[
 \mathbb{E}(e^{tX}) \leq e^{t^2(b -a)^2/8}.
@@ -114,37 +257,111 @@ g(\alpha x + (1 -\alpha)y) \leq \alpha g(x) + (1 -\alpha)g(y).
 
 \vspace{0.3cm}
 
+Para desarrollar la desigualdad de  Hoeffding, necesitamos el \texttt{m\'etodo de Chernoff}
+
+\vspace{0.3cm}
+
 \textbf{M\'etodo de Chernoff} Sea $X$ una variable aleatoria. Entonces
+
+\vspace{0.2cm}
 
 \[
 \mathbb{P}(X > \epsilon) \leq \inf_{t \geq 0}e^{-t\epsilon}\mathbb{E}(e^{tX}).
 \]
 
-\vspace{0.3cm}
 
-\textbf{Desigualdad de Hoeffding}
+\vspace{0.2cm}
 
-\vspace{0.3cm}
+Este m\'etodo puede ser derivado de la desigualdad de Markov en la funci\'on $h(x) = e^{tx}$ que la funci\'on generadora de momentos es $E(e^{tX})$.
+
+
+\vspace{0.2cm}
+
+
+Para alg\'un $t > 0$
+
+\vspace{0.2cm}
+
+\[
+P(X >\epsilon) = P(e^ X > e^{\epsilon}) = P(e^{tX} > e^{t\epsilon}) \leq e^{-t\epsilon}E(e^{tX}).
+\]
+
+Desde que esto es cierto para $t \geq 0$ el resultado sigue.
+
+
+\vspace{0.8cm}
+
+
 
 Sean $Y_1, Y_2, \dots, Y_n$ observaciones indepedientes, tal que $\mathbb{E}(Y_i)=0 $ y $a_i \leq Y_i \leq b_i$. Sea $\epsilon > 0$. Entonces, para alg\'un $ t > 0$
 
+\vspace{0.2cm}
+
 \[
-\mathbb{P}(\vert \overline{Y_n} - \mu \vert \geq \epsilon) \leq 2e^{-2n\epsilon^2/(b -a)^2}.
+\mathbb{P}(\vert \overline{Y}_n - \mu \vert \geq \epsilon) \leq 2e^{-2n\epsilon^2/(b -a)^2}.
 \]
 
 
 \vspace{0,3cm}
 
 
-La desigualdad de Hoeffding proporciona una cota superior a la probabilidad de que la suma de variables aleatorias se desv\'ie una cierta cantidad de su valor esperado.
+Sin p\'erdida de generalidad, supongamos $\mu = 0$. Primero se tiene
 
 \vspace{0.3cm}
+
+\begin{align*}
+P(\vert \overline{Y}_n\vert \geq \epsilon) = P( \overline{Y}_n \geq \epsilon) + P( \overline{Y}_n\vert \leq -\epsilon) \\
+= P( \overline{Y}_n \geq \epsilon) + P( -\overline{Y}_n \geq \epsilon)
+\end{align*}
+
+\vspace{0.3cm}
+
+Usamos el m\'etodo de chernoff. Para alg\'un $t > 0$, desde la desigualdad de Markov
+
+\vspace{0.2cm}
+
+\begin{align*}
+P( \overline{Y}_n \geq \epsilon) = P\Bigl(\displaystyle\sum_{i =1}^{n}Y_i \geq n\epsilon\Bigr) = P(e^{\sum_{i =1}^{n}y_i}\geq e^{n\epsilon})\\
+= P \Bigl(e^{t\sum_{i =1}^{n}y_i}\geq e^{tn\epsilon}\Bigr) \leq e^{-tn\epsilon}E\Bigl(e^{t\sum_{i =1}^{n}y_i} \Bigr)\\
+=e^{-tn\epsilon}\displaystyle\prod_{i}(e^{tY_i}) = e^{-tn\epsilon}(E(e^{tY_i}))^{n}
+\end{align*}
+
+
+\vspace{0.3cm}
+
+Por la propiedad 1: $E(e^{tY_i}) \leq e^{t^2(b -a)^2/8}$. As\'i
+
+\vspace{0.3cm}
+
+\[
+P( \overline{Y}_n \geq \epsilon) \leq e^{-tn\epsilon}e^{t^2n(b -a)^2/8}
+\]
+
+\vspace{0.3cm}
+
+Esto se reduce al m\'inimo cuando $t = 4\epsilon/(b -a)^2$ dando 
+
+\vspace{0.3cm}
+
+\[
+P( \overline{Y}_n \geq \epsilon) \leq e^{-2n\epsilon^2/(b -a)^2}
+\]
+
+\vspace{0.3cm}
+
+Aplicando el mismo argumento a $P( - \overline{Y}_n \geq \epsilon)$ se produce el resultado.
+
+
+\vspace{0.8cm}
 
 \textbf{Corolario} Si $X_1, X_2, \cdots, X_n$ son independientes con $\mathbb{P}(a \leq X_i \leq b) = 1$   y una media com\'un $\mu$, entonces con probabilidad de al menos
 $1 -\delta$
 
+
+\vspace{0.3cm}
+
 \[
-|\overline{X_n} - \mu | \leq \sqrt{\dfrac{(b -a)^2}{2n}\log\Bigl(\dfrac{2}{\delta}\Bigr)}.
+\vert \overline{X}_n - \mu \vert \leq \sqrt{\dfrac{(b -a)^2}{2n}\log\Bigl(\dfrac{2}{\delta}\Bigr)}.
 \]
 
 
@@ -207,7 +424,7 @@ Como las fracci\'on de recipientes vacios es $F=Z/m$ con media $\theta = \mu/n$.
 \mathbb{P}(|F - \theta| > t) = \mathbb{P}(|Z - \mu| > nt) \leq 2e^{-2n^2t^2/m}.
 \]
 
-\newpage
+\vspace{0.5cm}
 
 
 

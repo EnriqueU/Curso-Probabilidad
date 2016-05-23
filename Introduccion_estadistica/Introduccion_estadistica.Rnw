@@ -164,7 +164,7 @@ Cada estad\'istico calcula el par\'ametro de la poblaci\'on correspondiente y a\
 
 \vspace{0.3cm}
 
-La media muestral $\overline{X}$ estima la media poblacional $\mu = E(X)$.
+La media muestral $\overline{X}$ estima la media poblacional $\mu = \mathbb{E}(X)$.
 
 \vspace{0.2cm}
 
@@ -188,7 +188,7 @@ Si la poblaci\'on tiene media y varianza finita, la media posee las siguientes p
 Un estimador $\hat{\theta}$ es insesgado (\texttt{unbiased}) para un par\'ametro $\theta$ si su esperanza es igual al par\'ametro:
 
 \[
-E(\hat{\theta}) = \theta
+\mathbb{E}(\hat{\theta}) = \theta
 \]
 
 para todos los posibles valores de $\theta$.
@@ -196,7 +196,7 @@ para todos los posibles valores de $\theta$.
 \vspace{0.2cm}
 
 
-El sesgo (\texttt{Bias}) de $\hat{\theta}$ es definido como $Bias(\hat{\theta}) = E(\hat{\theta} - \theta)$.
+El sesgo (\texttt{Bias}) de $\hat{\theta}$ es definido como $Bias(\hat{\theta}) = \mathbb{E}(\hat{\theta} - \theta)$.
 
 
 \vspace{0.3cm}
@@ -208,7 +208,7 @@ El insesgamiento(\texttt{unbiasedness}) significa que en un largo plazo,  recoge
 
 
 \[
-E(\overline{X}) = E\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{EX_1 + \dots EX_n}{n} = \dfrac{\mu}{n} = \mu.
+\mathbb{E}(\overline{X}) = \mathbb{E}\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{\mathbb{E}X_1 + \dots \mathbb{E}X_n}{n} = \dfrac{n\mu}{n} = \mu.
 \]
 
 
@@ -217,7 +217,7 @@ E(\overline{X}) = E\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{EX_1 + \do
 Un estimador $\hat{\theta}$ es consistente para un par\'ametro $\theta$ si el error muestral de alguna magnitud converge a $0$ cuando la muestra aumenta de tama\~no hacia el infinito. Es decir:
 
 \[
-P\Bigl\{ \vert \hat{\theta} - \theta\vert > \epsilon \Bigr\} \rightarrow 0 \ \ \ \text{si}\ \ \  n \rightarrow \infty
+\mathbb{P}\Bigl\{ \vert \hat{\theta} - \theta\vert > \epsilon \Bigr\} \rightarrow 0 \ \ \ \text{si}\ \ \  n \rightarrow \infty
 \]
 
 \vspace{0.2cm}
@@ -230,7 +230,7 @@ para un $\epsilon  > 0$.
 Para usar esta desigualdad, encontremos la varianza de $\overline{X}$,
 
 \[
-Var(\overline{X}) = Var\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{VarX_1 + \dots + VarX_n}{n^2} = \dfrac{n\sigma^2}{n^2} = \dfrac{\sigma^2}{n}.
+\mathbb{V}(\overline{X}) = \mathbb{V}\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{\mathbb{V}X_1 + \dots + \mathbb{V}X_n}{n^2} = \dfrac{n\sigma^2}{n^2} = \dfrac{\sigma^2}{n}.
 \]
 
 \vspace{0.3cm}
@@ -238,7 +238,7 @@ Var(\overline{X}) = Var\Bigl(\dfrac{X_1 + \dots + X_n}{n} \Bigr) = \dfrac{VarX_1
 Por la desigualdad de Chebyshev para la variable aleatoria $\overline{X}$ tenemos que 
 
 \[
-P\Bigl\{ \vert\overline{X} -\mu   \vert > \epsilon\Bigr\} \leq \dfrac{Var(\overline{X})}{\epsilon^2} = \dfrac{\sigma^2/n}{\epsilon^2} \rightarrow 0\ \ \ \text{cuando} \ \ \ n \rightarrow \infty.
+\mathbb{P}\Bigl\{ \vert\overline{X} -\mu   \vert > \epsilon\Bigr\} \leq \dfrac{\mathbb{V}(\overline{X})}{\epsilon^2} = \dfrac{\sigma^2/n}{\epsilon^2} \rightarrow 0\ \ \ \text{cuando} \ \ \ n \rightarrow \infty.
 \]
 
 As\'i la media muestral es consistente.
@@ -255,7 +255,7 @@ Por el teorema del l\'imite central, la suma de observaciones y por tanto la med
 Esto es, la distribuci\'on de 
 
 \[
-Z = \dfrac{\overline{X} - E\overline{X}}{Sd\overline{X}} = \dfrac{\overline{X} - \mu}{\sigma\sqrt{n}}
+Z = \dfrac{\overline{X} - \mathbb{E}\overline{X}}{Sd\overline{X}} = \dfrac{\overline{X} - \mu}{\sigma\sqrt{n}}
 \]
 
 \vspace{0.3cm}
@@ -302,8 +302,8 @@ La mediana poblacional $M$ es un n\'umero que es excedido con probabilidad no ma
 
 \[
 \begin{dcases}
-P\{X > M\} \leq 0.5  \\
-P\{X < M\} \leq 0.5
+\mathbb{P}\{X > M\} \leq 0.5  \\
+\mathbb{P}\{X < M\} \leq 0.5
 \end{dcases}
 \]
 
@@ -336,8 +336,8 @@ Para distribuciones continuas, calcular la mediana poblacional se reduce a resol
 
 \[
 \begin{dcases}
-P\{X > M\} = 1 - F(M) \leq 0.5  \\
-P\{X < M\}  = F (M)\leq 0.5
+\mathbb{P}\{X > M\} = 1 - F(M) \leq 0.5  \\
+\mathbb{P}\{X < M\}  = F (M)\leq 0.5
 \end{dcases} \Rightarrow F(M) = 0.5
 \]
 
@@ -362,8 +362,8 @@ Para distribuciones discretas, la ecuaci\'on $F(x) = 0.5$ tiene ya sea todo un i
 
 \[
 \begin{dcases}
-P\{X < x \} = F(2) =  0.5  \\
-P\{X > x\}  = 1 - F(2)=  0.5
+\mathbb{P}\{X < x \} = F(2) =  0.5  \\
+\mathbb{P}\{X > x\}  = 1 - F(2)=  0.5
 \end{dcases}
 \]
 
@@ -430,8 +430,8 @@ Desde que $n = 30$ es par, encontramos la $n/2 = 15$-\'esima m\'as peque\~na y $
 
 \[
 \begin{dcases}
-P\{X < x \}  \leq p  \\
-P\{X > x\}  \leq 1 -p
+\mathbb{P}\{X < x \}  \leq p  \\
+\mathbb{P}\{X > x\}  \leq 1 -p
 \end{dcases} 
 \]
 
@@ -530,7 +530,7 @@ s^2 = \dfrac{1}{n -1}\displaystyle\sum_{i =1}^{n}(X_i - \overline{X})^2
 
 \vspace{0.3cm}
 
-y mide la variabilidad entre las observaciones y estima la \texttt{varianza de la poblaci\'on} $\sigma^2 = Var(X)$.
+y mide la variabilidad entre las observaciones y estima la \texttt{varianza de la poblaci\'on} $\sigma^2 = \mathbb{V}(X)$.
 
 \vspace{0.3cm}
 
@@ -581,10 +581,10 @@ El coeficiente $\dfrac{1}{n -1}$ asegura que $s^2$ es un estimador insesgado  de
 
 \vspace{0.3cm}
 
-Para probar esto supongamos que $\mu = E(X) = 0$, entonces $EX_i^2 = VarX_i = \sigma^2$, as\'i 
+Para probar esto supongamos que $\mu = \mathbb{E}(X) = 0$, entonces $\mathbb{E}X_i^2 = \mathbb{V}X_i = \sigma^2$, as\'i 
 
 \[
-E\overline{X} = Var\overline{X} = \sigma^2/n
+\mathbb{E}\overline{X} = \mathbb{V}\overline{X} = \sigma^2/n
 \]
 
 \vspace{0.2cm}
@@ -592,7 +592,7 @@ E\overline{X} = Var\overline{X} = \sigma^2/n
 Entonces 
 
 \[
-Es^2 = \dfrac{E\displaystyle\sum X_i^2 - nE\overline{X}^2}{n -1} = \dfrac{n\sigma^2 - \sigma^2}{n - 1} = \sigma^2.
+\mathbb{E}s^2 = \dfrac{\mathbb{E}\displaystyle\sum X_i^2 - n\mathbb{E}\overline{X}^2}{n -1} = \dfrac{n\sigma^2 - \sigma^2}{n - 1} = \sigma^2.
 \]
 
 \vspace{0.3cm}
@@ -607,7 +607,7 @@ s_{Y}^2 = \dfrac{\displaystyle\sum(Y_i - \overline{Y})^2}{n - 1} = \dfrac{\displ
 
 \vspace{0.2cm}
 
-Desde que $E(Y_i) = 0$, tenemos $E(s_{X}^2) = E(s_{Y}^2) = \sigma_{Y}^2 = \sigma_{X}^2$. De manera similar que para  $\overline{X}$ se puede mostrar que bajo ciertas condiciones, la varianza muestral y la desviaci\'on est\'andar muestral son consistentes y cumplen la propiedad de normalidad as\'intotica.
+Desde que $\mathbb{E}(Y_i) = 0$, tenemos $\mathbb{E}(s_{X}^2) = \mathbb{E}(s_{Y}^2) = \sigma_{Y}^2 = \sigma_{X}^2$. De manera similar que para  $\overline{X}$ se puede mostrar que bajo ciertas condiciones, la varianza muestral y la desviaci\'on est\'andar muestral son consistentes y cumplen la propiedad de normalidad as\'intotica.
 
 
 \vspace{0.8cm}
@@ -651,6 +651,7 @@ En la pr\'actica, estos valores at\'ipicos  pueden ser un problema real que es d
 
 Una de estas medidas es un \texttt{rango intercuartil}, que es definido como la diferencia entre el primer y tercer cuartil 
 
+\vspace{0.3cm}
 
 \[
 IQR = Q_3 - Q_1

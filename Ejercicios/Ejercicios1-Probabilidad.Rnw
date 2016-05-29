@@ -1,0 +1,274 @@
+\documentclass{article}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{bigints}
+\usepackage[]{algorithm2e}
+\geometry{verbose,tmargin=1.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfstartview={XYZ null null 1}}
+\begin{document}
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+library(ggplot2)
+library(grid)
+# set global chunk options
+opts_chunk$set(fig.path='figure/minimal-', fig.align='center', fig.show='hold')
+options(formatR.arrow=TRUE,width=90)
+@
+
+
+\title{Lista de ejercicios }
+
+
+\author{Curso: Introducci\'on a la Probabilidad y Estad\'istica CM-072}
+\date{}
+\maketitle
+
+\vspace{0.3cm}
+
+
+\textbf{Lecturas Importantes }
+\begin{enumerate}
+\item  Art\'iculo sobre cotas en Probabilidad:
+
+\url{https://jeremykun.com/2013/04/15/probabilistic-bounds-a-primer/}.
+\end{enumerate}
+%{\normalsize Los c\'odigos, se presentaran impresos,  o como un archivo con extensi\'on $.R$, mostrando ejemplos de su ejecuci\'on.}
+\setlength{\unitlength}{1in}
+
+\begin{picture}(6,.1) 
+\put(0,0) {\line(1,0){6.25}}         
+\end{picture}
+
+\vspace{0.5cm}
+
+
+\begin{enumerate}
+\item Sea $p_1, p_2, \dots, p_N$ n\'umeros no negativos tal que $p_1 + p_2 + \cdots p_N = 1$ y sea $\Omega = \{\omega_1, \omega_2, \cdots, \omega_N \}$ y sea $F$ el conjunto potencia de $\Omega$. Muestra que la funci\'on $\mathbb{Q}$ dada por
+
+$$
+\mathbb{Q}(A) = \sum_{i:\omega_i \in A}p_i \ \ \ A \in F
+$$
+es una probabilidad en $(\Omega, F)$. Si $F$ no es el conjunto potencia, $\mathbb{Q}$ es una probabilidad.
+\item Una moneda es lanzada $2n$ veces. ?` Cu\'al es la probabilidad de obtener $n$ caras?. ?`Qu\'e sucede cuando $n \rightarrow \infty$?.
+
+\item Da un ejemplo concreto de una variable aleatorio que no es discreta ni continua.
+\item Considera una variables aleatoria $X$ con $f_{X}(x) = \exp(-x)$ para $x \geq 0$ y $0$ en otros casos. Calcula el la funci\'on de densidad de $Y=g(X) = \log(X)$. Concluye  que:
+
+$$
+f_{g(X)}(r) \neq g \circ f_{X}(r) = g(f_{X}(r)).
+$$
+
+\item Consideremos sobre $(a ,b)$ una variable $X$, tal que 
+
+$$
+F_{X}(x) = \begin{cases}
+(x -a)/(b -a ) & x\in (a,b) \\
+ 0				& x\leq a\\
+ 1			& 	x \geq b
+\end{cases}
+$$
+
+y 
+
+$$
+f_{X}(x) = \begin{cases}
+1/(b -a) & x \in (a, b)\\
+0 & \text{en otros casos}.
+\end{cases}
+$$
+
+Calcula la esperanza y varianza de $X$.
+\item Si $X$ es una variable aleatoria discreta y $g: \mathbb{R} \rightarrow \mathbb{R}$, prueba que 
+
+$$
+\mathbb{E}(g(X)) = \sum_{x \in Im\ X}g(x)\mathbb{P}(X =x).
+$$
+
+siempre que esta suma converga absolutamente.
+
+\item Definimos el tama\~no de soporte de una variable aleatoria  discreta $X$  como el n\'umero de valores que puede alcanzar  con una probabilidad distinta de cero (el n\'umero puede ser infinito). ?`Cu\'al es la relaci\'on entre los tama\~nos de soporte de una variable aleatoria  discreta  $X$  y de  $g(X)$?.
+\item Un dado es lanzado $n$ veces. Muestra que la probabilidad de que haya un  n\'umero par de \texttt{seis}  $\dfrac{1}{2}[1 + (\dfrac{2}{3})^n]$. Para este caso $0$ es un n\'umero par.
+\item Sea $A_r, r\geq 1$, los eventos tal que $P(A_r) = 1$ para todo $r$. Muestra que $P(\displaystyle\cap_{r =1}^{\infty}A_r) = 1$.
+\item Consideremos $\Omega = \{1, 2, \dots, p\}$ donde $p$ es primo. Sea $F$ el conjunto de todos los subconjuntos de $\Omega$ y $P(A) = \vert A\vert/p$ para todo $A \in F$. Muestra que, si $A$ y $B$ son eventos independientes, entonces al menos unos de los conjuntos $A$ y $B$  es $\emptyset$ o $\Omega$.
+\item Si $m$ estudiantes  nacidos en en $1991$ est\'an asistiendo a una conferencia, muestra que la probabilidad de que al menos dos de ellos tengan el mismo  cumplea\~nos es $p = 1 -(365)!/{(365 -m)!365^m}$. Muestra que $p >1/2$ cuando $m = 23$.
+\item Para que valores de $c$ y $\alpha$ es la funci\'on $p$ definida por
+
+\[
+p(k) = \begin{cases}
+ck^{\alpha} & \text{para}\ \ k =1,2, \dots\\
+0 & \text{en otros casos}
+\end{cases}
+\]
+
+es una funci\'on de masa de probabilidad.
+
+\item Si $X$ tiene una distribuci\'on geom\'etrica con par\'ametro $p$, muestra que
+
+\[
+P(X > m + n| X > m) = P(X > n)
+\]
+
+para $m, n = 0,1,2, \dots$.
+
+\item Sea $X$ y $Y$ una variable aleatoria discreta, cada teniendo una funci\'on de masa dado por
+
+\[
+P(X = k) = P(Y = k) = pq^k \ \ \text{para}\ \ k =0,1,2,\dots
+\]
+donde $0 < p = 1 -q < 1$. Muestra que
+
+\[
+P(X =k|X +Y = n) = \dfrac{1}{n +1}\ \ \text{para}\ \ k = 0,1, 2, \dots, n.
+\]
+\item Sea $X_1, X_2, \dots$ variables aleatoria independientes, identicamente distribuidas y sea $S_n = X_1 +X_2+ \cdots, +X_n$. Muestra que $E(S_m/S_n) = m/n$ si $m \leq n$ y $E(S_m/S_n) = 1 +(m -n)\mu E(1/S_n)$ si $m > n$, donde $\mu =E(X_1)$.
+\item Sean $F$ y $G$ funciones de distribuci\'on y sea la \texttt{m\'etrica de Levi}
+
+\[
+d_{L} = \inf\{\epsilon >0: G(x -\epsilon) -\epsilon\leq F(X)\leq G(x + \epsilon) + \epsilon \ \ \text{para todo}\ \ x \}
+\]
+
+Muestra que $d_{L}$ es efecto una m\'etrica sobre el espacio de las funciones de distribuci\'on. 
+\item Sea $X_r, 1\leq r\leq n$, variables aleatorias independientes, que son sim\'etricas alrededor del $0$; esto es, $X_r$ y $X_r$ tienen la misma distribuci\'on. Muestra que, para todo $x$, $P(S_n \geq x) = P(S_n \leq -x)$, donde $S_n = \displaystyle\sum_{r =1}^{n}X_r$.
+\item Sea $G(V,E)$ un grafo finito. Para un conjunto de v\'ertices y una arista $e \in E$, definimos la funci\'on indicador	
+
+\[
+I_{W}(e) = \begin{cases}
+1 & \text{si $e$ conecta $W$ y $W^{c}$}
+\end{cases}
+\]
+Sea $N_{W} = \displaystyle\sum_{e \in E}I_{W}(e)$. Muestra que existe un $W \subseteq N$ tal que $N_W \geq \frac{1}{2}\vert E\vert$.
+\item Sea $X$ con una funci\'on generadora de probabilidad $G_{X}(s)$ y sea $u_n = P(X > n)$. Muestra que la funci\'on generadora $U(s)$ de la secuencia $u_0, u_1, \dots$ satisface
+\[
+(1 -s)U(s) = 1 -G_{X}(s)
+\]
+siempre que la serie definida, de esa funci\'on generadora converge.
+\item Sean $X$ e $Y$ variables aleatorias independientes, con una distribuci\'on de Poisson con par\'ametros $\mu$ y $\lambda$ respectivamente. Prueba que $X +Y$ tiene una distribuci\'on de Poisson y que $var(X + Y) = var(X) + var(Y)$. Encuentra la probabilidad condicional $P(X= k| X+y = n)$ para $0 \leq k \leq n$ y as\'i muestra que la esperanza condicional de $X$ dado $X +Y = n$, esto es
+
+\[
+E(X| X +Y = n) = \displaystyle\sum_{k=0}^{\infty}kP(X = k|X +Y =n).
+\]
+es $n\lambda/(\lambda + \mu)$.
+\item Una moneda muestra cara con probabilidad $p$. Sea $X_n$ el n\'umero de de lanzamientos requeridos para obtener $n$ caras consecutivas. Muestra que $E(X_n) = \displaystyle\sum_{k =1}^{n}p^{-k}$.
+\item Si $var(X) =0$, entonces, existe un $a \in \mathbb{R}$ tal que $P(X = a) = 1$.
+\item Sean $X, Y$ variables aleatorias independientes con una funci\'on de distribuci\'on com\'un $F$ y una funci\'on densidad $f$. Muestra que $V = \max{X ,Y}$ tiene una funci\'on de distribuci\'on $P(V \leq x) = F(x)^2$ y funci\'on densidad $f_{V}(x) = 2f(x)F(x), x\in \mathbb{R}$. Encuentra la funci\'on densidad de $U = \min\{X,Y\}$
+
+\item Sea $X$ una variable aleatoria con media $\mu$ y una funci\'on de distribuci\'on continua $F$. Muestra que
+	
+	\[
+	\bigintsss_{-\infty}^{a}F(x)dx = \bigintsss_{a}^{\infty}[1 -F(x)]dx
+\]
+\item Muestra que para la densidad normal est\'andar $\phi(x)$, muestra que $\phi^{'}(x) + x\phi(x) = 0$. 
+\item Sea $\{X_r: r\geq 1 \}$ variables aleatorias indepedientes, uniformemente distribuidas en $[0,1]$. Sea $0 < x < 1$ y definimos
+	
+	\[
+	N = \min\{n \geq 1: X_1 +X_2 + \cdots + X_n > x\}
+	\]
+	
+	Muestra que $P(N > n) = x^n/n!$ y as\'i encuentra la media y la varianza de $N$.
+	\item Sea $X$ una variable aleatoria con una distribuci\'on binomial con par\'ametros $n$ y $p$, muestra que 
+	
+	\[
+	E\Bigl( \dfrac{1}{1 + X}\Bigr) = \dfrac{1 -(1-p)^{n +1}}{(n+1)p}
+	\] 
+	
+	Encuentra el l\'imite de esta expresi\'on cuando $n \rightarrow \infty$ y $p \rightarrow \infty$.
+	\item La variable aleatoria $X$ tiene una funci\'on densidad proporcional a $g(x)$, donde $g$ es una funci\'on satisfaciendo
+	
+\[
+g(x) = \begin{cases}
+\vert x\vert^{-n} & \text{si} \vert x \vert \geq 1 \\
+0 & \text{en otros casos}
+\end{cases}
+\]
+y $n \geq 2$ es un entero. Encuentra la funci\'on de densidad de $X$ y determina los valores de $n$ para el cual la media y la varianza de $X$ existe.
+\item Si $X$ es una variable aleatoria que toma los valores no negativos, muestra que
+\[
+E(X) = \bigintsss_{0}^{\infty}[1 -F_X(x)]dx
+\]
+siempre que la integral exista.
+\item Es la funci\'on $G$, definida por
+\[
+G(X,Y) = \begin{cases}
+1 & \text{if}\ \ x + y \leq 0, \\
+0 & \text{en otros casos}
+\end{cases}
+\]
+ una funci\'on de distribuci\'on conjunta de alg\'un par de variables aleatorias.
+ \item Sea $X$ y $Y$ variables aleatorias independientes, $X$ teniendo la distribuci\'on normal con media $0$ y la varianza $1$ y $Y$ teniendo la distribuci\'on $\chi^2$ con $n$ grados de libertad. Muestra que
+ 
+ \[
+ T = \dfrac{X}{\sqrt{Y/n}}
+ \]
+ tiene una funci\'on densidad
+ 
+ \[
+ f(t) = \dfrac{1}{\sqrt{\pi n}}\dfrac{\Gamma(\frac{1}{2}(n + 1))}{\Gamma(\frac{1}{2}n)}\Bigl(1 + \frac{t^2}{n} \Bigr)^{^{-\frac{1}{2}(n +1)}} \ \ \text{para}\ t \in  \mathbb{R}.
+ \]
+ \item Sea $X$ una funci\'on generadora de momentos $M(t)$.
+ \begin{itemize}
+ \item Muestra que $M(t)M(-t)$ es la funci\'on generadora de momentos de $X -Y$, donde $Y$ es independiente de $X$ , pero que tiene la misma distribuci\'on.
+ \item De manera similar, describe las variables aleatorias que tienen funciones generadoras de momentos
+ \[
+ \dfrac{1}{2 -M(t)}, \ \ \ \ \ \bigintss_{0}^{\infty}M(ut)e^{-u}du.
+ \]
+ \end{itemize}
+ 
+ \item Considera una secuencia de lanzamientos infinitos. La probabilidad de un \'exito en el i-\'esimo \mbox{lanzamiento} es alg\'un n\'umero positivo $p_i$. Sea $N$ el evento que no hay \'exitos y sea $I$ el evento donde hay un n\'umero infinito de \'exitos.
+
+\begin{itemize}
+\item Asumiendo que los lanzamientos son independientes y que $\displaystyle\sum_{i=1}^{\infty}p_i = \infty$. Muestra que $P(N) =0$ y $P(I) = 1$.
+\item Asumimos que $\displaystyle\sum_{i=1}^{\infty}p_i < \infty$. Muestra que $P(I) = 0$.
+\end{itemize}
+\item Supongamos que $X$ e $Y$ son variables aleatorias geom\'etricas con par\'ametro $p$, independientes, \mbox{identicamente} distribuidas. Muestra que 
+
+\[
+P(X = i| X +Y = n) = \dfrac{1}{n -1}, \ \ i = 1, \dots, n-1.
+\]
+\item Considera el siguiente \texttt{pdf}
+
+\[
+f_{X}(x) = \begin{cases}
+p\lambda e^{-\lambda x} & \text{si} \ \ x\geq 0, \\
+(1 - p)\lambda e^{\lambda x} & \text{si}\ \  x < 0
+\end{cases}
+\]
+donde $\lambda$ y $p$ son escalares con $\lambda > 0$ y $p \in [0,1]$. Encuentra la media y varianza de $X$ de dos maneras:
+
+\begin{itemize}
+\item calculando la esperanza asociada.
+\item usando la estrategia divide y vencer\'as y la media y varianza de la variable aleatoria exponencial.
+\end{itemize}
+\item Sean $X$ e $Y$ variablea aleatorias normales est\'andar indepedientes. El par $(X,Y)$ puede ser descrita en coordenadas polares de la siguiente forma
+
+\[
+X =R\cos\Theta, \ \ \ Y=R\sin \Theta
+\]
+
+para $R \leq 0$ y $\Theta \in [0, 2\pi]$.
+
+\begin{itemize}
+\item Muestra que $\Theta $ es uniformemente distribuida en $[0, 2\pi]$, que $R$ tiene un \texttt{pdf}
+
+\[
+f_{R}(r) = re^{-r^2/2}\ \ \ r \geq 0
+\]
+
+y que $R$ y $\Theta$ son independientes.
+\item Muestra que $R^2$ tiene una distribuci\'on exponencial con par\'ametro $1/2$.
+\end{itemize}
+\end{enumerate}
+
+
+\end{document} 
+

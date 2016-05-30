@@ -2,12 +2,18 @@
 
 ## Temas
 
-1. Probabilidad.
-2. Variables aleatorias.
-3. Momentos.
-4. Variables aleatorias multivariadas.
-5. Desigualdades y teoremas límites.
-6. Simulación y método de Montecarlo.
+1. Propiedades de la probabilidad.
+2. Independencia, probabilidad condicional, ley de Bayes.
+3. Variables aleatorias, distribuciones, densidades y esperanza.
+4. Distribuciones conjuntas, funciones marginales, covarianza, correlación.
+5. La ley de los grandes números.
+6. Teorema del límite central.
+7. Importantes distribuciones
+  * Bernoulli, Binomial
+  * Uniforme
+  * Normal(Gausiana)
+  * Exponencial, Poisson
+  * Gamma, Beta, Chi-cuadrado
 7. Procesos estocásticos
 8. Caminos aleatorios.
 9. Introducción a la Estadística.

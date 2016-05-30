@@ -41,7 +41,7 @@ options(formatR.arrow=TRUE,width=90)
 
 \vspace{0.5cm}
 
-Sean un par de variables aleatorias discretas $X$ y $Y$. Considerando el par  $(X,Y)$ como un vector aleatorio con valores en $\mathbb{R}^2$, definamos el  \texttt{jmf} \texttt{(joint mass function)} de $X$ y $Y$  como la funci\'on $p_{X,Y} : \mathbb{R}^2 \rightarrow [0,1]$ definida por
+Sean un par de variables aleatorias discretas $X$ e $Y$. Considerando el par  $(X,Y)$ como un vector aleatorio con valores en $\mathbb{R}^2$, definamos el  \texttt{jmf} \texttt{(joint mass function)} de $X$ e $Y$  como la funci\'on $p_{X,Y} : \mathbb{R}^2 \rightarrow [0,1]$ definida por
 
 
 \vspace{0.3cm}
@@ -211,7 +211,7 @@ para $x = (x_1, x_2, \dots, x_n) \in \mathbb{R}^n$.
 
 \vspace{0.3cm}
 
-Si $X$ e $Y$ son variables aleatorias discretas y sea $g : \mathbb{R}^2 \rightarrow \mathbb{R}$ entonces $Z = g(X,Y)$ es una variable aleatoria tambi\'en, definida formalmente como $Z(\omega) = g(X(\omega),Y(\omega)$ para $\omega \in \mathbb{R}$. La esperanza de $Z$ puede ser calculada directamente desde la funci\'on $p_{X,Y}(x,y) = \mathbb{P}(X = X, Y =y)$ como lo indica el siguiente teorema
+Si $X$ e $Y$ son variables aleatorias discretas y sea $g : \mathbb{R}^2 \rightarrow \mathbb{R}$ entonces $Z = g(X,Y)$ es una variable aleatoria tambi\'en, definida formalmente como $Z(\omega) = g(X(\omega),Y(\omega))$ para $\omega \in \mathbb{R}$. La esperanza de $Z$ puede ser calculada directamente desde la funci\'on $p_{X,Y}(x,y) = \mathbb{P}(X = x, Y =y)$ como lo indica el siguiente teorema
 
 \vspace{0.3cm}
 
@@ -429,7 +429,7 @@ Adem\'as $X_1, X_2, \dots, X_n$ son independientes
 
 \vspace{0.2cm}
 
-La familia $X$ es llamada \texttt{independiente componente a componente) si $X_i$ y $Y_j$ son independientes si $i \leq j$.
+La familia $X$ es llamada \texttt{independiente componente a componente} si $X_i$ y $Y_j$ son independientes si $i \leq j$.
 }
 
 
@@ -604,7 +604,7 @@ F_{X}(x) = \mathbb{P}(X_1 \leq x_1, X_2 \leq x_2, \dots, X_n \leq x_n)
 
 \vspace{0.3cm}
 
-para $x = (x_1, x_2, \dots, x_n \in \mathbb{R}^n$. La variables $X_1, X_2, \dots, X_n$ son independientes
+para $x = (x_1, x_2, \dots, x_n) \in \mathbb{R}^n$. La variables $X_1, X_2, \dots, X_n$ son independientes
 
 \vspace{0.3cm}
 
@@ -1001,7 +1001,7 @@ f(x,y) =\begin{cases}
 
 \vspace{0.3cm}
 
-El rango de $X$ y $Y$ es el rect\'angulo $(0, \infty) \times (0, \infty)$. Podemos escribir $f(x, y) = g(x)h(y)$, donde $g(x) = 2e^{-x}$ y $h(y) = e^{-2y}$. As\'i, $X$ y $Y$ son independientes.
+El rango de $X$ e $Y$ es el rect\'angulo $(0, \infty) \times (0, \infty)$. Podemos escribir $f(x, y) = g(x)h(y)$, donde $g(x) = 2e^{-x}$ y $h(y) = e^{-2y}$. As\'i, $X$ y $Y$ son independientes.
 
 \vspace{0.8cm}
 
@@ -1032,7 +1032,7 @@ por el \texttt{teorema 5} donde $A = \{(x,y)\in \mathbb{R}^2: x +y \leq z \}$. E
 
 \vspace{0.3cm}
 
-con la sustituci\'on $u = x, v = x^2 + y$. Diferenciando esta ecuaci\'on con respecto a $z$ , se tiene
+con la sustituci\'on $u = x, v = x + y$. Diferenciando esta ecuaci\'on con respecto a $z$ , se tiene
 
 \vspace{0.3cm}
 

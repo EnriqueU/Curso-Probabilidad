@@ -14,10 +14,15 @@
   * Normal(Gausiana)
   * Exponencial, Poisson
   * Gamma, Beta, Chi-cuadrado
-7. Procesos estocásticos
-8. Caminos aleatorios.
-9. Introducción a la Estadística.
-10. Inferencia estadística.
+8.  Introducción  a los Procesos estocásticos.
+  * Caminos aleatorios
+  * Cadenas de Markov
+  * Martingalas
+9. Introducción a la Estadística
+10. Inferencia estadística
+  * Estimación de paramétros
+  * Intervalos de confianza
+  * Estimación de máxima probabilidad
 
 ## Libros y artículos
 
